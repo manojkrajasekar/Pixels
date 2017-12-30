@@ -1,5 +1,3 @@
-/* This creates the database, that stores all the data of the application */
-/* CREATE DATABASE photoapp;
 
 /*This is to use the photoapp database*/
 USE 'photoapp';
