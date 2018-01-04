@@ -1,89 +1,67 @@
 use photoapp;
 
+/*USER TABLE*/
+
 /*This stored procedure is executed, when a new user is added.*/
-CALL Register_user('1', 'manoj.k.rajasekar@gmail.com', 'Manoj', 'Rajasekar', '0', '1');
-CALL Register_user('2','vignesh.sekar@gmail.com', 'Vignesh', 'Rajasekar','0','1');
-CALL Register_user('3','venkat@gmail.com', 'venkat', 'vellaichamy','0','1');
-CALL Register_user('4','Abhinav@gmail.com', 'Abhi', 'Karthikeyan','0','1');
+CALL REGISTER_USER('manoj.k.rajasekar@gmail.com','Manoj','Rajasekar', @USER_ID);
+CALL REGISTER_USER('vignesh.rajasekar@gmail.com', 'Vignesh', 'Rajasekar',@USER_ID);
 
-/*This stored procedure is executed when a new topic is posted*/
-CALL Add_topic('01','1', 'Wildlife', '0');
+/* Retreives the user details, based on the given user_id */
+CALL GET_USERDETAILS('4');
 
-/*Stored procedure is executed, which stores the post details in the database */
-CALL Insert_postdetails('1','1', '01', 'vignesh/tiger', 'Brave', '1');
-CALL Insert_postdetails('2', '2', '01', 'venkat/lion', 'King', '1');
-CALL Insert_postdetails('1,','3', '01', 'Abhinav/zebra', 'zebra', '1');
+/* This updates the user details */
+CALL UPDATE_USER_DETAILS('6', 'Mano', 'Rajasek');
 
-/*USER TABLE */
+/* This stored procedure when executed, sets the IS_ACTIVE column to 0, thus deactivating the user */
+CALL DEACTIVATE_USER('6');
 
-/*This calls the stored procedure, to update the first name of the user*/
-CALL Update_firstname('1', 'Mano');
-
-/*This calls the stored procedure, to update the last name of the user*/
-CALL Update_lastname('1', 'Rajasekar');
-
-/* This calls the stored procedure, and makes the user inactive*/
-CALL Deactivate_user('1', '0');
 
 
 /* TOPIC TABLE */
 
-/*This stored procedure when executed, addds a topic given by the user*/
-CALL Add_topic('01','1', 'Wildlife', '0');
+/*This stored procedure is executed when a new topic is added*/
+CALL ADD_TOPIC('Wildlife', @TopicID);
+SELECT @TopicID; 
 
-/*This stored procedure when executed, Updates the title*/
-CALL Update_topic('01','1', 'Bird', '0');
-
-/*This Stored procedure is called, when an user wins, and his topic is made active */
-CALL Activate_topic('01', '1', '1');
-
-/*This Stored procedure when called, deactivates the topic by setting the IS_ACTIVE to 0*/
-CALL Deactivate_topic('01', '1', '0');
-
-/*This stored procedure when executed, displays all the topics which were active */
-CALL Display_topic('01', '1', '0');
+/*This stored procedure when executed retreives all the topics, which are active*/
+CALL GET_TOPICS('1');
 
 
-/* POST TABLE */
 
-/* This stored procedure when called, updates the Topic URL */
-CALL Update_topic_url('1','1','nassygs/kajajaia', '0');
+/* POSTS TABLE */
 
-/* This stored procedure when called, updates the Description of the post */
-CALL Update_description('1','1','Interesting');
+/*Stored procedure is executed, which stores the post details in the database */
+CALL ADD_POST('3', '3', 'manoj/wildlife/pics', 'life in danger', 'Moments', @postID);
+SELECT @postID;
 
-/* This stored procedure when called, activates the post*/
-CALL Activate_post('1');
+/*This when executed, Updates the description of the post */
+CALL UPDATE_DESCRIPTION('5', '3', 'Cool');
 
-/* This stored procedure when called, deactivates the post */
-CALL Deactivate_post('0');
+/*This when executed, deletes the post by setting the IS_ACTIVE column to 0 */
+CALL DELETE_POST('6', '3');
+
 
 
 /* VOTES TABLE */
 
 /* This Stored procedure when called, registers the vote and its details for the post */
-CALL Add_votes('1', 'venkat@gmail.com', '1', '0000:00:00 00:00:00');
-CALL Add_votes('1', 'Dishen@gmail.com', '1', '2018:12:24 00:00:11');
-
-
-CALL Display_votes('1');
-
-/* This Stored procedure when called, Deactivates the vote */
-CALL Delete_votes('1', 'venkat@gmail.com');
-
+CALL ADD_VOTE('2','2', @VOTE_ID);
 
 
 
 /* COMMENT TABLE */
 
-/*This Stored procedure when executed, saves the added comment in the table */
-CALL Add_comment('1', '1', '1', 'Fantasticpic', '1', '0000:00:00 00:00:00');
+/*When a commment is added for a post, it stores the details of that comment in the table. */
+CALL ADD_COMMENT('1','2','Cool pic', @COMMENT_ID);
 
-/*This Stored procedure when executed, edits the comment and saves it */
-CALL Edit_comment('1', '1', 'Best pic');
+/*This when executed, fetches the comment for a particular post base don the given post id*/
+CALL GET_COMMENTS('1', '2');
 
-/* This Stored procedure deactivates the isactivate status of comment */ 
-CALL Delete_comment('1', '1');
+/* Changes made in the comment by the user, are updated and stored in the comments table */
+CALL UPDATE_COMMENT('Interesting', '2', '1');
+
+/* This deletes the comment, by setting the IS_ACTIVE column to 0 */
+CALL DELETE_COMMENT('4','1');
 
 
 
