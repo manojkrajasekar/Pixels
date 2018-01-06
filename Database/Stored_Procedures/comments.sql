@@ -1,69 +1,76 @@
-DROP PROCEDURE IF EXISTS ADD_COMMENT;
+DROP PROCEDURE IF EXISTS add_comment;
 /* This stored procedure when executed, saves the added comment in the comments table */
 DELIMITER //
-CREATE PROCEDURE ADD_COMMENT
+CREATE PROCEDURE add_comment
 (
-	IN _USER_ID INTEGER,
-	IN _POST_ID INTEGER, 
-	IN _COMMENT_CONTENT VARCHAR(100),
-	OUT _COMMENT_ID INTEGER
+	IN _user_id INTEGER,
+	IN _post_id INTEGER, 
+	IN _comment_content VARCHAR(100),
+	OUT _comment_id INTEGER
 )
 BEGIN
-	INSERT INTO COMMENTS(USER_ID, POST_ID, COMMENT_CONTENT) VALUES(_USER_ID, _POST_ID, _COMMENT_CONTENT);
+	INSERT INTO comments(user_id, post_id, comment_content) VALUES(_user_id, _post_id, _comment_content);
 	
-	SELECT C.COMMENT_ID FROM COMMENTS C 
-		WHERE C.POST_ID = _POST_ID;
+	SELECT last_insert_id() INTO _comment_id;
 END;
 //
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS GET_COMMENTS;
+DROP PROCEDURE IF EXISTS get_comments;
 /* This stored procedure when executed, displays all the comments for a particular post */
 DELIMITER //
-CREATE PROCEDURE GET_COMMENTS
+CREATE PROCEDURE get_comments
 (
-	IN _USER_ID INTEGER, 
-	IN _POST_ID INTEGER
+	IN _post_id INTEGER,
+	IN _limit INTEGER
 )
 BEGIN
-	SELECT  U.FIRST_NAME, C.COMMENT_CONTENT FROM USER U JOIN COMMENTS C ON C.USER_ID = U.USER_ID 
-		WHERE C.POST_ID = POST_ID AND C.IS_ACTIVE = 1 ; 
+	SELECT  
+		u.first_name,
+		c.comment_content,
+		c.upload_time
+		FROM USER u JOIN comments c ON c.user_id = u.USER_ID 
+		WHERE c.post_id = _post_id AND c.is_active = 1 
+		ORDER BY upload_time 
+		DESC LIMIT _limit ; 
 END;
 //
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS UPDATE_COMMENT;
+DROP PROCEDURE IF EXISTS update_comment;
 /* This stored procedure when executed, updates the comment */
 DELIMITER //
-CREATE PROCEDURE UPDATE_COMMENT
+CREATE PROCEDURE update_comment
 (
-	IN _COMMENT_CONTENT VARCHAR(100), 
-	IN _COMMENT_ID INTEGER, 
-	IN _USER_ID INTEGER
+	IN _comment_content VARCHAR(200), 
+	IN _comment_id INTEGER, 
+	IN _post_id INTEGER,
+	IN _user_id INTEGER
 )
 BEGIN
-	UPDATE COMMENTS C
-		SET COMMENT_CONTENT = _COMMENT_CONTENT
-			WHERE C.COMMENT_ID = _COMMENT_ID;
+	UPDATE comments c
+		SET comment_content = _comment_content
+		WHERE c.comment_id = _comment_id AND c.post_id = _post_id;
 END;
 //
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS DELETE_COMMENT;
+DROP PROCEDURE IF EXISTS delete_comment;
 /* This stored procedure when executed, Deactivates the comment */
 DELIMITER //
-CREATE PROCEDURE DELETE_COMMENT
+CREATE PROCEDURE delete_comment
 (
-	IN _COMMENT_ID INTEGER, 
-	IN _USER_ID INTEGER
+	IN _comment_id INTEGER, 
+	IN _user_id INTEGER,
+    IN _post_id INTEGER
 )
 BEGIN
-	UPDATE COMMENTS C
-		SET C.IS_ACTIVE = 0
-			WHERE C.COMMENT_ID = _COMMENT_ID;
+	UPDATE comments c
+		SET c.is_active = 0
+			WHERE c.comment_id = _comment_id AND c.post_id = _post_id;
 END;
 //
 DELIMITER ;
