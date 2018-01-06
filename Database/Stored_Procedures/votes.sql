@@ -1,41 +1,36 @@
-DROP PROCEDURE IF EXISTS ADD_VOTE;
+DROP PROCEDURE IF EXISTS add_vote;
 /* This stored procedure when executed, adds a vote for a particular post */
 DELIMITER //
-CREATE PROCEDURE ADD_VOTE
+CREATE PROCEDURE add_vote
 (
-	IN _POST_ID INTEGER,
-	IN _USER_ID INTEGER,
-	OUT _VOTE_ID INTEGER
+	IN _post_id INTEGER,
+	IN _user_id INTEGER,
+	OUT _vote_id INTEGER
 )
 BEGIN
-	INSERT INTO VOTES(POST_ID, USER_ID) VALUES(_POST_ID, _USER_ID);
+	INSERT INTO votes(post_id, user_id) VALUES(_post_id, _user_id);
 	
-	SELECT V.VOTE_ID FROM VOTES V WHERE V.USER_ID = _USER_ID;
+	SELECT last_insert_id() INTO _vote_id;
 END;
 //
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS UPDATE_VOTE;
+DROP PROCEDURE IF EXISTS update_vote;
 /* This stored procedure when executed, Displays the recently casted votes for a particular post */
 DELIMITER //
-CREATE PROCEDURE UPDATE_VOTE
+CREATE PROCEDURE update_vote
 (
-	IN _VOTE_ID INTEGER,
-	IN _POST_ID INTEGER, 
-	IN _USER_ID INTEGER
+	IN _vote_id INTEGER,
+	IN _post_id INTEGER, 
+	IN _user_id INTEGER
 )
 BEGIN
-	SELECT V.IS_ACTIVE FROM VOTES V WHERE V.VOTE_ID = VOTE_ID; 
-	IF V.IS_ACTIVE = 0 THEN
-		UPDATE VOTES V
-			SET V.IS_ACTIVE = 1
-				WHERE V.VOTE_ID = _VOTE_ID;
-	ELSE
-		UPDATE VOTES V
-			SET V.IS_ACTIVE = 0
-				WHERE V.VOTE_ID = _VOTE_ID;
-	END IF;
+	INSERT INTO votes(post_id, user_id) VALUES(_post_id, _user_id);
+	
+	UPDATE votes v
+		SET v.is_active = NOT v.is_active
+		WHERE v.vote_id = _vote_id;
 END;
 //
 DELIMITER ;
