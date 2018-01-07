@@ -4,8 +4,8 @@ USE 'photoapp';
 
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS votes;
-DROP TABLE IF EXISTS post;
-DROP TABLE IF EXISTS topic;
+DROP TABLE IF EXISTS posts;
+DROP TABLE IF EXISTS topics;
 DROP TABLE IF EXISTS users;
 
 
@@ -22,7 +22,7 @@ CREATE TABLE users
 
 
 /*Creates the topic table*/
-CREATE TABLE topic
+CREATE TABLE topics
 (
 	topic_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY,
 	user_id INTEGER,
@@ -36,7 +36,7 @@ CREATE TABLE topic
 
 
 /*Creates the post table, which holds all the information about the post.*/
-CREATE TABLE post
+CREATE TABLE posts
 (
 	post_id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY, 
 	user_id INTEGER,
@@ -46,7 +46,7 @@ CREATE TABLE post
 	upload_time TIMESTAMP,
 	is_active BOOLEAN DEFAULT 1,
 	next_topic VARCHAR(100),
-	FOREIGN KEY(topic_id) REFERENCES topic(topic_id),
+	FOREIGN KEY(topic_id) REFERENCES topics(topic_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 
@@ -60,7 +60,7 @@ CREATE TABLE votes
 	is_active BOOLEAN DEFAULT 1,
 	voted_time TIMESTAMP,
 	FOREIGN KEY(user_id) REFERENCES users(user_id),
-	FOREIGN KEY(post_id) REFERENCES post(post_id)
+	FOREIGN KEY(post_id) REFERENCES posts(post_id)
 );
 
 
@@ -75,7 +75,7 @@ CREATE TABLE comments
 	is_active BOOLEAN DEFAULT 1,
 	upload_time TIMESTAMP,
 	FOREIGN KEY(user_id) REFERENCES users(user_id),
-	FOREIGN KEY(post_id) REFERENCES post(post_id)
+	FOREIGN KEY(post_id) REFERENCES posts(post_id)
 );
 
 
