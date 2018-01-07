@@ -46,8 +46,8 @@ CREATE TABLE post
 	upload_time TIMESTAMP,
 	is_active BOOLEAN DEFAULT 1,
 	next_topic VARCHAR(100),
-	FOREIGN KEY(topic_id) REFERENCES TOPIC(TOPIC_ID),
-	FOREIGN KEY(user_id) REFERENCES USER(USER_ID)
+	FOREIGN KEY(topic_id) REFERENCES topic(topic_id),
+	FOREIGN KEY(user_id) REFERENCES users(user_id)
 );
 
 
@@ -59,7 +59,7 @@ CREATE TABLE votes
 	user_id INTEGER,
 	is_active BOOLEAN DEFAULT 1,
 	voted_time TIMESTAMP,
-	FOREIGN KEY(user_id) REFERENCES USER(USER_ID),
+	FOREIGN KEY(user_id) REFERENCES users(user_id),
 	FOREIGN KEY(post_id) REFERENCES post(post_id)
 );
 
@@ -74,7 +74,7 @@ CREATE TABLE comments
 	comment_content VARCHAR(100),
 	is_active BOOLEAN DEFAULT 1,
 	upload_time TIMESTAMP,
-	FOREIGN KEY(user_id) REFERENCES USER(USER_ID),
+	FOREIGN KEY(user_id) REFERENCES users(user_id),
 	FOREIGN KEY(post_id) REFERENCES post(post_id)
 );
 
