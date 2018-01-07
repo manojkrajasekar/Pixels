@@ -12,6 +12,10 @@ SELECT @USER_ID;
 CALL REGISTER_USER('Dishen.Raana@gmail.com', 'Dishen', 'Raana',@USER_ID);
 SELECT @USER_ID;
 
+CALL REGISTER_USER('Abhinav.Karthikeyan@gmail.com', 'Abhinav', 'karthieyan',@USER_ID);
+SELECT @USER_ID;
+
+
 /* Retreives the user details, based on the given user_id */
 CALL get_user_details('1');
 
@@ -20,9 +24,6 @@ CALL update_user_details('1','Mano','Rajasekar');
 
 /* This stored procedure when executed, sets the IS_ACTIVE column to 0, thus deactivating the user */
 CALL toggle_user('1');
-
-
-
 
 
 /* TOPIC TABLE */
@@ -34,8 +35,13 @@ SELECT @TopicID;
 CALL add_topic('Beach', '2', @TopicID);
 SELECT @TopicID;
 
-CALL add_topic('Sunshine', '3', @TopicID);
+CALL add_topic('Sunshine', '4', @TopicID);
 SELECT @TopicID;
+
+CALL add_topic('Dream', '5', @TopicID);
+SELECT @TopicID;
+
+
 
 /*This stored procedure when executed retreives all the topics, which are active*/
 CALL GET_TOPICS('1');
@@ -48,15 +54,28 @@ CALL GET_TOPICS('1');
 CALL add_post('1', '2', 'manoj/wildlife/pics', 'life in danger', 'Moments', @postID);
 SELECT @postID;
 
-CALL add_post('2', '2', 'vicky/life/picall', 'Awesome', 'Thrill', @postID);
+CALL add_post('1', '3', 'Demo/Manoj/pics', 'Demo', 'life', @postID);
 SELECT @postID;
 
-CALL add_post('3', '1', 'Dishen/baby/picall', 'fast', 'pay', @postID);
+
+CALL add_post('2', '3', 'vicky/life/picall', 'Awesome', 'Thrill', @postID);
 SELECT @postID;
+
+
+CALL add_post('2', '2', 'Kill/life/picall', 'Silence', 'Threat', @postID);
+SELECT @postID;
+
+
+CALL add_post('4', '2', 'Dishen/baby/picall', 'fast', 'pay', @postID);
+SELECT @postID;
+
+CALL add_post('4', '3', 'Dishen/baby/all', 'pursuit', 'cool', @postID);
+SELECT @postID;
+
 
 
 /* Teis when executed, displays all the posts for a */
-CALL get_posts_by_topic('2');
+CALL get_posts_by_topic('3');
 
 
 /*This when executed, Updates the description of the post */
@@ -70,10 +89,13 @@ CALL delete_post('6', '3');
 /* VOTES TABLE */
 
 /* This Stored procedure when called, registers the vote and its details for the post */
+CALL add_vote('2','1', @vote_id);
+SELECT @vote_id;
+
 CALL add_vote('2','2', @vote_id);
 SELECT @vote_id;
 
-CALL add_vote('2','1', @vote_id);
+CALL add_vote('2','4', @vote_id);
 SELECT @vote_id;
 
 CALL add_vote('3','1', @vote_id);
@@ -82,6 +104,11 @@ SELECT @vote_id;
 CALL add_vote('3','2', @vote_id);
 SELECT @vote_id;
 
+CALL add_vote('3','4', @vote_id);
+SELECT @vote_id;
+
+
+CALL get_vote_info_by_post('2');
 
 /* This stored procedure when called, updates the vote i.e changes the is_active value of vote */
 CALL update_vote('2','2','7');
@@ -93,12 +120,16 @@ CALL update_vote('2','2','7');
 CALL add_comment('1','2','Cool pic', @comment_id);
 SELECT @comment_id;
 
+CALL add_comment('1','3','Cool pic', @comment_id);
+SELECT @comment_id;
+
+
 /*This when executed, fetches the comment for a particular post base don the given post id*/
-CALL get_comments('1', '1');
-CALL get_comments('7', '2');
+CALL get_comments('3', '1');
+CALL get_comments('3', '2');
 
 /* Changes made in the comment by the user, are updated and stored in the comments table */
-CALL update_comment('Interesting', '5', '7', '2');
+CALL update_comment('Interesting', '1');
 
 /* This deletes the comment, by setting the IS_ACTIVE column to 0 */
 CALL delete_comment('5','1,','7');
