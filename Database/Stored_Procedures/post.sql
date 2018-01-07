@@ -1,5 +1,6 @@
 DROP PROCEDURE IF EXISTS add_post;
 /* This stored procedure is executed, when a photo is posted and the details are stored in the database */
+/* Have to check whether the user is active, and all other fields must not be null */
 DELIMITER //
 CREATE PROCEDURE add_post
 (
@@ -17,7 +18,22 @@ BEGIN
 	DECLARE EXIT HANDLER FOR 1062
 	SELECT 'MySQL error 1062: Duplicate ket entry for primary key';
 	
-	INSERT INTO post(user_id, topic_id, url, description, next_topic) VALUES(_user_id, _topic_id, _url, _description, _next_topic);
+	INSERT INTO post
+	(
+		user_id,
+		topic_id, 
+		url,
+		description, 
+		next_topic
+	)
+	VALUES
+	(
+		_user_id,
+		_topic_id, 
+		_url,
+		_description, 
+		_next_topic
+	);
 	
 	SELECT last_insert_id() INTO _post_id;
 END;
@@ -25,30 +41,66 @@ END;
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS get_posts;
 /* This stored procedure when executed, displays all the comments for a particular post */
+/* What to do if the topic_id is Null */
+DROP PROCEDURE IF EXISTS get_posts_by_topic;
 DELIMITER //
-CREATE PROCEDURE get_posts
+CREATE PROCEDURE get_posts_by_topic
 (
-	IN _post_id INTEGER, 
-	IN _user_id INTEGER
+	IN _topic_id INTEGER 
 )
 BEGIN
 	SELECT  
-		p.post_id,
-		p.url,
-		p.description,
-		(SELECT COUNT(*) FROM votes WHERE v.is_active = 1 AND v.post_id = _post_id) AS total
-		FROM post p JOIN votes v ON p.post_id = v.post_id 
-		WHERE p.post_id = _post_id AND v.is_active = 1;
+		p.post_id AS 'POST ID',
+		p.url AS 'URL',
+		p.description AS 'Post Description',
+        u.first_name AS 'Posted by',
+        COUNT(v.post_id) AS 'Vote count'
+        FROM post p 
+        JOIN users u
+        	    ON p.user_id = u.user_id
+		LEFT JOIN votes v 
+                ON p.post_id = v.post_id AND v.is_active = 1
+        WHERE p.topic_id = _topic_id
+        GROUP BY p.post_id;
 END;
 //
 DELIMITER ;
 
 
 
-DROP PROCEDURE IF EXISTS update_post;
+/* This stored procedure when executed, displays all the comments for a particular post */
+/* What to do if the user_id is Null */
+DROP PROCEDURE IF EXISTS get_posts_by_user;
+DELIMITER //
+CREATE PROCEDURE get_posts_by_user
+(
+	IN _user_id INTEGER
+)
+BEGIN
+	SELECT  
+		p.post_id AS 'POST ID',
+		p.url AS 'URL',
+		p.description AS 'Post Description',
+        u.first_name AS 'Posted by',
+        COUNT(v.post_id) AS 'Vote count'
+        FROM post p 
+        JOIN users u
+        	    ON p.user_id = u.user_id
+		LEFT JOIN votes v 
+                ON p.post_id = v.post_id AND v.is_active = 1
+        WHERE p.user_id = _user_id
+        GROUP BY p.user_id;
+END;
+//
+DELIMITER ;
+
+
+
+
 /* This stored procedure when executed, the description for the post is updated */
+/* What to do if any one or all of these: user_id, post_id or description is null  */
+DROP PROCEDURE IF EXISTS update_post;
 DELIMITER //
 CREATE PROCEDURE update_post
 (
@@ -67,8 +119,9 @@ END;
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS delete_post;
 /* This stored procedure when executed, deactivates the post */
+/* What to do if any one or all of these: user_id or post_id is null  */
+DROP PROCEDURE IF EXISTS delete_post;
 DELIMITER //
 CREATE PROCEDURE delete_post
 (
