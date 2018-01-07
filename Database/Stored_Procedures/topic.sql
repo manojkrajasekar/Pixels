@@ -1,65 +1,70 @@
 /* On execution, stores the topic details in the TOPIC table */
-DROP PROCEDURE IF EXISTS ADD_TOPIC;
+/* What if all these fields or one among these: topic_id and user_id are null, when this stored procedure is called. */
+DROP PROCEDURE IF EXISTS add_topic;
 DELIMITER
     //
-CREATE PROCEDURE ADD_TOPIC
+CREATE PROCEDURE add_topic
 (
-    IN _TOPIC_TITLE VARCHAR(100),
-    IN _USER_ID INTEGER,
-    OUT _TOPIC_ID INTEGER
+    IN _topic_title VARCHAR(100),
+    IN _user_id INTEGER,
+    OUT _topic_id INTEGER
 )
 BEGIN
     DECLARE EXIT HANDLER FOR 1452
 	SELECT
 		'MySQL error 1452: Cannot add or update a child row: a foreign key constraint fails' ;
-	INSERT INTO TOPIC(TOPIC_TITLE, USER_ID)
-	VALUES(_TOPIC_TITLE, _USER_ID) ;
-	SELECT
-		LAST_INSERT_ID()
-	INTO _TOPIC_ID
-	FROM
-		TOPIC T
-	WHERE
-		T.USER_ID = _USER_ID ;
+	INSERT INTO topic
+    (
+        topic_title,
+        user_id
+    )
+	VALUES
+    (
+        _topic_title,
+        _user_id
+    ) ;
+	SELECT last_insert_id() INTO _topic_id
 END ; //
 DELIMITER ;
+
 
 /* ------------------------------------------------------------------------------------------ */
 
 /* This stored procedure when executed, displays either the current topic or previous topic based on the passed value */
-DROP PROCEDURE IF EXISTS GET_TOPICS;
+/* What if the limit value is null, when this stored procedure is called. */
+DROP PROCEDURE IF EXISTS get_topics;
 DELIMITER
     //
-CREATE PROCEDURE GET_TOPICS
+DROP PROCEDURE IF EXISTS get_topics;
+DELIMITER
+    //
+CREATE PROCEDURE get_topics
 (
-    IN _IS_CURRENT BOOLEAN
+    IN _is_current BOOLEAN,
+    IN _limit INTEGER
 )
 BEGIN
     DECLARE EXIT HANDLER FOR 1452
     SELECT 'MySQL error 1452: Cannot add or update a child row: a foreign key constraint fails' ;
-    IF _IS_CURRENT = 1 THEN
+    IF _is_current = 1 THEN
         SELECT
-            T.TOPIC_ID,
-            T.TOPIC_TITLE,
-            T.USER_ID,
-            T.START_TIME,
-            T.END_TIME
-        FROM
-            TOPIC T
-        WHERE
-            T.IS_CURRENT = _IS_CURRENT ;
-    ELSEIF _IS_CURRENT = 0 THEN
+            t.topic_id AS 'Topic ID',
+            t.topic_title AS 'Topic title',
+            t.user_id AS 'User ID',
+            t.start_time AS 'Start Time',
+            t.end_time AS 'End Time'
+        FROM topic t
+        WHERE t.is_current = _is_current ;
+    ELSEIF _is_current = 0 THEN
         SELECT
-            T.TOPIC_ID,
-            T.TOPIC_TITLE,
-            T.USER_ID,
-            T.START_TIME,
-            T.END_TIME
-        FROM
-            TOPIC
-        ORDER BY
-            START_TIME
-        DESC LIMIT 2 ;
+            t.topic_id AS 'Topic ID',
+            t.topic_title AS 'Topic title',
+            t.user_id AS 'User ID',
+            t.start_time 'Start Time',
+            t.end_time 'End Time'
+        FROM topic t
+        ORDER BY t.start_time
+        DESC LIMIT _limit;
     END IF ;
 END ; //
 DELIMITER ;
