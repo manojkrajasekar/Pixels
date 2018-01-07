@@ -24,7 +24,7 @@ BEGIN
         _first_name,
         _last_name
     ) ;
-    SELECT LAST_INSERT_ID() INTO _user_id;
+    SELECT last_insert_id() INTO _user_id;
 
 END ; //
 DELIMITER ;
