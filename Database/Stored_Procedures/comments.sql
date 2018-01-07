@@ -1,5 +1,6 @@
-DROP PROCEDURE IF EXISTS add_comment;
 /* This stored procedure when executed, saves the added comment in the comments table */
+/* What to do if ay one or all of these: user_id, post_id or comment_content is null  */
+DROP PROCEDURE IF EXISTS add_comment;
 DELIMITER //
 CREATE PROCEDURE add_comment
 (
@@ -17,8 +18,9 @@ END;
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS get_comments;
 /* This stored procedure when executed, displays all the comments for a particular post */
+/* What to do if any one or all of these: post_id or limit is null */
+DROP PROCEDURE IF EXISTS get_comments;
 DELIMITER //
 CREATE PROCEDURE get_comments
 (
@@ -27,20 +29,22 @@ CREATE PROCEDURE get_comments
 )
 BEGIN
 	SELECT  
-		u.first_name,
-		c.comment_content,
-		c.upload_time
-		FROM USER u JOIN comments c ON c.user_id = u.USER_ID 
-		WHERE c.post_id = _post_id AND c.is_active = 1 
-		ORDER BY upload_time 
-		DESC LIMIT _limit ; 
+		u.first_name AS 'Commented by',
+		c.comment_content AS 'Comment',
+		c.upload_time AS 'Time'
+			FROM users u
+			JOIN comments c ON c.user_id = u.user_id 
+			WHERE c.post_id = _post_id AND c.is_active = 1 
+			ORDER BY c.upload_time 
+			DESC LIMIT _limit ; 
 END;
 //
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS update_comment;
 /* This stored procedure when executed, updates the comment */
+/* What to do if any one or all of these: comment_id, user_id, post_id or comment_content is null  */
+DROP PROCEDURE IF EXISTS update_comment;
 DELIMITER //
 CREATE PROCEDURE update_comment
 (
@@ -58,8 +62,9 @@ END;
 DELIMITER ;
 
 
-DROP PROCEDURE IF EXISTS delete_comment;
 /* This stored procedure when executed, Deactivates the comment */
+/* What to do if any one or all of these: comment_id, user_id, or post_id is null  */
+DROP PROCEDURE IF EXISTS delete_comment;
 DELIMITER //
 CREATE PROCEDURE delete_comment
 (
@@ -70,7 +75,7 @@ CREATE PROCEDURE delete_comment
 BEGIN
 	UPDATE comments c
 		SET c.is_active = 0
-			WHERE c.comment_id = _comment_id AND c.post_id = _post_id;
+		WHERE c.comment_id = _comment_id AND c.post_id = _post_id;
 END;
 //
 DELIMITER ;
