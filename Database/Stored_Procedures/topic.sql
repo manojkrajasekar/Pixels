@@ -11,19 +11,19 @@ CREATE PROCEDURE add_topic
 )
 BEGIN
     DECLARE EXIT HANDLER FOR 1452
-	SELECT
-		'MySQL error 1452: Cannot add or update a child row: a foreign key constraint fails' ;
-	INSERT INTO topic
-    (
-        topic_title,
-        user_id
-    )
-	VALUES
-    (
-        _topic_title,
-        _user_id
-    ) ;
-	SELECT last_insert_id() INTO _topic_id
+		SELECT
+			'MySQL error 1452: Cannot add or update a child row: a foreign key constraint fails' ;
+		INSERT INTO topic
+		(
+			topic_title,
+			user_id
+		)
+		VALUES
+		(
+			_topic_title,
+			_user_id
+		) ;
+		SELECT last_insert_id() INTO _topic_id ;
 END ; //
 DELIMITER ;
 
