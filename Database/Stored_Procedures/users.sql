@@ -47,7 +47,7 @@ BEGIN
 		u.last_name AS 'First Name',
 		u.no_of_posts AS 'Total Number of posts'
         FROM users u
-        WHERE u.user_id = _user_id;
+        WHERE u.user_id = _user_id AND u.is_active = 1;
 END;
 //
 DELIMITER ;
@@ -71,7 +71,7 @@ BEGIN
 		SET
 			u.first_name = _first_name,
 			u.last_name = _last_name
-		WHERE u.user_id = _user_id ;
+		WHERE u.user_id = _user_id AND u.is_active = 1;
 END ; //
 DELIMITER ;
 
