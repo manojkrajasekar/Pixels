@@ -14,7 +14,7 @@ BEGIN
 		
 	SELECT 'MySQL error 1452: Cannot add or update a child row: a foreign key constraint fails' ;
 	
-	INSERT INTO topic
+	INSERT INTO topics
 	(
 		topic_title,
 		user_id
@@ -37,36 +37,29 @@ DELIMITER ;
 DROP PROCEDURE IF EXISTS get_topics;
 DELIMITER
     //
-DROP PROCEDURE IF EXISTS get_topics;
-DELIMITER
-    //
 CREATE PROCEDURE get_topics
 (
     IN _is_current BOOLEAN,
-    IN _limit INTEGER
+    IN _limit INTEGER DEFAULT 1
 )
 BEGIN
-    DECLARE EXIT HANDLER FOR 1452
+	DECLARE EXIT HANDLER FOR 1452
     SELECT 'MySQL error 1452: Cannot add or update a child row: a foreign key constraint fails' ;
-    IF _is_current = 1 THEN
-        SELECT
-            t.topic_id AS 'Topic ID',
-            t.topic_title AS 'Topic title',
-            t.user_id AS 'User ID',
-            t.start_time AS 'Start Time',
-            t.end_time AS 'End Time'
-        FROM topic t
-        WHERE t.is_current = _is_current ;
-    ELSEIF _is_current = 0 THEN
-        SELECT
-            t.topic_id AS 'Topic ID',
-            t.topic_title AS 'Topic title',
-            t.user_id AS 'User ID',
-            t.start_time 'Start Time',
-            t.end_time 'End Time'
-        FROM topic t
-        ORDER BY t.start_time
-        DESC LIMIT _limit;
-    END IF ;
+	
+	IF _limit is NULL THEN
+		SET _limit = 1;
+	
+	END IF;
+	
+		SELECT
+			t.topic_id AS 'Topic ID',
+			t.topic_title AS 'Topic title',
+			t.user_id AS 'Topic posted by',
+			t.start_time 'Start Time',
+			t.end_time 'End Time'
+			FROM topics t
+			WHERE t.is_current = _is_current 
+			ORDER BY t.start_time DESC
+			LIMIT _limit;
 END ; //
 DELIMITER ;
