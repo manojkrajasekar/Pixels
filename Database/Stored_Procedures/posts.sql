@@ -18,7 +18,7 @@ BEGIN
 	DECLARE EXIT HANDLER FOR 1062
 	SELECT 'MySQL error 1062: Duplicate ket entry for primary key';
 	
-	INSERT INTO post
+	INSERT INTO posts
 	(
 		user_id,
 		topic_id, 
@@ -55,13 +55,16 @@ BEGIN
 		p.url AS 'URL',
 		p.description AS 'Post Description',
         u.first_name AS 'Posted by',
-        COUNT(v.post_id) AS 'Vote count'
-        FROM post p 
-        JOIN users u
+        COUNT(v.post_id) AS 'Vote count',
+		COUNT(c.post_id) AS 'comments count'
+		FROM posts p 
+		JOIN users u
         	    ON p.user_id = u.user_id
 		LEFT JOIN votes v 
                 ON p.post_id = v.post_id AND v.is_active = 1
-        WHERE p.topic_id = _topic_id
+		JOIN comments c 
+                ON p.post_id = c.post_id AND c.is_active = 1
+		WHERE p.topic_id = _topic_id AND u.is_active = 1
         GROUP BY p.post_id;
 END;
 //
@@ -84,13 +87,33 @@ BEGIN
 		p.description AS 'Post Description',
         u.first_name AS 'Posted by',
         COUNT(v.post_id) AS 'Vote count'
-        FROM post p 
+        FROM posts p 
         JOIN users u
         	    ON p.user_id = u.user_id
 		LEFT JOIN votes v 
                 ON p.post_id = v.post_id AND v.is_active = 1
         WHERE p.user_id = _user_id
         GROUP BY p.user_id;
+END;
+//
+DELIMITER ;
+
+
+
+DROP PROCEDURE IF EXISTS get_voter_info_by_post;
+DELIMITER //
+CREATE PROCEDURE get_voter_info_by_post
+(
+	IN _post_id INTEGER
+)
+BEGIN
+	SELECT  
+		u.first_name AS 'Voted by'
+        FROM votes v 
+        LEFT JOIN users u
+		ON v.user_id = u.user_id AND u.is_active = 1 
+		WHERE v.post_id = _post_id AND v.is_active = 1 
+        GROUP BY v.vote_id;
 END;
 //
 DELIMITER ;
@@ -105,15 +128,14 @@ DELIMITER //
 CREATE PROCEDURE update_post
 (
 	IN _post_id INTEGER,
-	IN _user_id INTEGER, 
 	IN _description VARCHAR(100)
 )
 BEGIN
 	DECLARE EXIT HANDLER FOR 1452
 	SELECT 'MySQL error 1452: Cannot add or update a child row: a foreign key constraint fails';
-	UPDATE post p
+	UPDATE posts 
 		SET description = _description
-		WHERE p.post_id = _post_id;
+		WHERE post_id = _post_id AND posts.is_active = 1;
 END;
 //
 DELIMITER ;
@@ -125,15 +147,23 @@ DROP PROCEDURE IF EXISTS delete_post;
 DELIMITER //
 CREATE PROCEDURE delete_post
 (
-	IN _post_id INTEGER,
-	IN _user_id INTEGER
+	IN _post_id INTEGER
 )
 BEGIN
 	DECLARE EXIT HANDLER FOR 1452
 	SELECT 'MySQL error 1452: Cannot add or update a child row: a foreign key constraint fails';
-	UPDATE post p
+	
+	UPDATE posts 
 	    SET is_active = 0
-		WHERE p.post_id = _post_id;
+		WHERE post_id = _post_id AND posts.is_active = 1;
+	
+	UPDATE votes
+		SET is_active = 0
+		WHERE votes.post_id = _post_id AND votes.is_active = 1;
+	
+	UPDATE comments
+		SET is_active = 0
+		WHERE comments.post_id = _post_id AND comments.is_active = 1;
 END;
 //
 DELIMITER ;
