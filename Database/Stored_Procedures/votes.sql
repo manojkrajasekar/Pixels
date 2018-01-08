@@ -33,20 +33,8 @@ DELIMITER //
 CREATE PROCEDURE update_vote
 (
 	IN _vote_id INTEGER,
-	IN _post_id INTEGER, 
-	IN _user_id INTEGER
 )
 BEGIN
-	INSERT INTO votes
-	(
-		post_id,
-		user_id
-	)
-	VALUES
-	(
-		_post_id,
-		_user_id
-	);
 	
 	UPDATE votes v
 		SET v.is_active = NOT v.is_active
