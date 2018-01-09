@@ -1,5 +1,7 @@
-/* This stored procedure when executed, adds a vote for a particular post */
-/* What to do, if the user_id or post_id are null when this stored procedure is called*/
+USE photoapp;
+
+/* Adds a vote for the post, stores the details of the user_id who voted and post_id for which the vote was casted */
+/* QUESTION: What to do, if the user_id or post_id is null ? */
 DROP PROCEDURE IF EXISTS add_vote;
 DELIMITER //
 CREATE PROCEDURE add_vote
@@ -20,24 +22,24 @@ BEGIN
 		_user_id
 	);
 	
-	SELECT last_insert_id() INTO _vote_id;
+	SELECT LAST_INSERT_ID() INTO _vote_id;
 END;
 //
 DELIMITER ;
 
-/* This stored procedure when executed, Displays the recently casted votes for a particular post */
-/* What to do, if the vote_id, user_id or post_id are null when this stored procedure is called*/
+/* Toggles the vote for a post, based on the current is_active value */
+/* QUESTION: What to do if the vote_id is null ? */
 DROP PROCEDURE IF EXISTS update_vote;
 
 DELIMITER //
 CREATE PROCEDURE update_vote
 (
-	IN _vote_id INTEGER,
+	IN _vote_id INTEGER
 )
 BEGIN
 	
 	UPDATE votes v
-		SET v.is_active = NOT v.is_active
+		SET v.is_active QUESTION:= NOT v.is_active
 		WHERE v.vote_id = _vote_id;
 END;
 //
