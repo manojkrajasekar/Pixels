@@ -154,7 +154,7 @@ DELIMITER ;
 
 
 /* Deactivates the post, by setting the is_active value to zero */
-/* QUESTION: What to do if any one (or) all of the input parameters are null  */
+/* QUESTION: What to do if any one (or) all of the input parameters are null */
 DROP PROCEDURE IF EXISTS delete_post;
 DELIMITER //
 CREATE PROCEDURE delete_post
