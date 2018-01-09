@@ -118,14 +118,14 @@ CREATE PROCEDURE get_voter_info_by_post
 )
 BEGIN
 	SELECT  
-			u.first_name AS 'Voted by'
+			u.first_name AS 'Voted by',
+			u.user_id AS 'User ID'
         FROM votes v 
         JOIN users u
 			ON v.user_id = u.user_id
 				AND v.post_id = _post_id 
 				AND u.is_active = 1 
-				AND v.is_active = 1 
-        GROUP BY v.vote_id;
+				AND v.is_active = 1 ;
 END;
 //
 DELIMITER ;
