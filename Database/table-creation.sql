@@ -1,6 +1,6 @@
 
 /*This is to use the photoapp database*/
-USE 'photoapp';
+USE testDB;
 
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS votes;
@@ -18,7 +18,7 @@ CREATE TABLE users
 	last_name VARCHAR(20),
 	no_of_posts INTEGER DEFAULT 0, 
 	is_active BOOLEAN DEFAULT 1
-);
+) ENGINE = 'InnoDB';
 
 
 /*Creates the topic table*/
@@ -32,7 +32,7 @@ CREATE TABLE topics
 	start_time TIMESTAMP,
 	end_time TIMESTAMP,
 	FOREIGN KEY(user_id) REFERENCES users(user_id)
-);
+) ENGINE = 'InnoDB'; 
 
 
 /*Creates the post table, which holds all the information about the post.*/
@@ -48,7 +48,7 @@ CREATE TABLE posts
 	next_topic VARCHAR(100),
 	FOREIGN KEY(topic_id) REFERENCES topics(topic_id),
 	FOREIGN KEY(user_id) REFERENCES users(user_id)
-);
+) ENGINE = 'InnoDB';
 
 
 /*Creates the votes table*/
@@ -61,7 +61,7 @@ CREATE TABLE votes
 	voted_time TIMESTAMP,
 	FOREIGN KEY(user_id) REFERENCES users(user_id),
 	FOREIGN KEY(post_id) REFERENCES posts(post_id)
-);
+) ENGINE = 'InnoDB';
 
 
 
@@ -76,6 +76,6 @@ CREATE TABLE comments
 	upload_time TIMESTAMP,
 	FOREIGN KEY(user_id) REFERENCES users(user_id),
 	FOREIGN KEY(post_id) REFERENCES posts(post_id)
-);
+) ENGINE = 'InnoDB';
 
 
