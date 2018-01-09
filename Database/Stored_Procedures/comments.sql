@@ -1,5 +1,7 @@
-/* This stored procedure when executed, saves the added comment in the comments table */
-/* What to do if any one or all of these: user_id, post_id or comment_content is null  */
+USE photoapp;
+
+/* stores the details of an added comment(user id, post id, comment) for a post in the comments table */
+/*  QUESTION: What to do if any one (or) all of the input parameters are null  */
 DROP PROCEDURE IF EXISTS add_comment;
 DELIMITER //
 CREATE PROCEDURE add_comment
@@ -23,14 +25,14 @@ BEGIN
 		_comment_content
 	);
 	
-	SELECT last_insert_id() INTO _comment_id;
+	SELECT LAST_INSERT_ID() INTO _comment_id;
 END;
 //
 DELIMITER ;
 
 
-/* This stored procedure when executed, displays all the comments for a particular post */
-/* What to do if any one or all of these: post_id or limit is null */
+/* Displays all the comments for a post */
+/* QUESTION: What to do if any one (or) all of the input parameters are null */
 DROP PROCEDURE IF EXISTS get_comments;
 DELIMITER //
 CREATE PROCEDURE get_comments
@@ -40,21 +42,24 @@ CREATE PROCEDURE get_comments
 )
 BEGIN
 	SELECT  
-		u.first_name AS 'Commented by',
-		c.comment_content AS 'Comment',
-		c.upload_time AS 'Time'
-			FROM comments c 
-			JOIN users u ON u.user_id = c.user_id 
-			WHERE c.post_id = _post_id AND c.is_active = 1 AND u.is_active = 1 
-			ORDER BY c.upload_time DESC
-			LIMIT _limit ; 
+			u.first_name AS 'Commented by',
+			c.comment_content AS 'Comment',
+			c.upload_time AS 'Time'
+		FROM comments c 
+		JOIN users u 
+			ON u.user_id = c.user_id 
+				AND c.post_id = _post_id
+				AND u.is_active = 1 
+				AND c.is_active = 1
+		ORDER BY c.upload_time DESC
+		LIMIT _limit ; 
 END;
 //
 DELIMITER ;
 
 
-/* This stored procedure when executed, updates the comment */
-/* What to do if any one or all of these: comment_id, user_id, post_id or comment_content is null  */
+/* Updates the comment */
+/* QUESTION: What to do if any one (or) all of the input parameters are null  */
 DROP PROCEDURE IF EXISTS update_comment;
 DELIMITER //
 CREATE PROCEDURE update_comment
@@ -67,14 +72,15 @@ BEGIN
 		SET
 			c.comment_content = _comment_content,
 			c.upload_time = current_timestamp +0
-		WHERE c.comment_id = _comment_id AND c.is_active = 1;
+		WHERE c.comment_id = _comment_id 
+			AND c.is_active = 1;
 END;
 //
 DELIMITER ;
 
 
-/* This stored procedure when executed, Deactivates the comment */
-/* What to do if any one or all of these: comment_id, user_id, or post_id is null  */
+/* Deactivates the comment, by seting the is_active value to 0 */
+/* QUESTION: What to do if any one (or) all of the input parameters are null  */
 DROP PROCEDURE IF EXISTS delete_comment;
 DELIMITER //
 CREATE PROCEDURE delete_comment
@@ -84,7 +90,8 @@ CREATE PROCEDURE delete_comment
 BEGIN
 	UPDATE comments 
 		SET is_active = 0
-		WHERE comment_id = _comment_id AND c.is_active = 1;
+		WHERE comment_id = _comment_id
+			AND c.is_active = 1;
 END;
 //
 DELIMITER ;
