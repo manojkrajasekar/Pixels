@@ -98,3 +98,20 @@ END;
 //
 DELIMITER ;
 
+
+/* Gets the initial information of the logged in user and the current topic */
+/* QUESTION: What if the logged_in_user_id is null ? */
+DROP PROCEDURE IF EXISTS get_initial_info;
+DELIMITER //
+CREATE PROCEDURE get_initial_info
+(
+	IN logged_in_user_id INTEGER 
+)
+BEGIN
+	SELECT  first_name AS 'user' from users WHERE user_id = logged_in_user_id AND users.is_active = 1
+	UNION
+	SELECT  topic_title AS 'current topic' from topics WHERE topics.is_current = 1;
+END;
+//
+DELIMITER ;
+
