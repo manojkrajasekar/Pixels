@@ -41,6 +41,11 @@ USE photoapp;
  	IN _limit INTEGER		
  )		
  BEGIN		
+ 
+	IF _limit IS NULL THEN
+		set _limit = 1
+	END IF;
+	
  	SELECT  		
  			u.first_name AS 'Commented by',		
  			c.comment_content AS 'Comment',		
