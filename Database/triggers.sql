@@ -2,7 +2,8 @@ use photoapp;
 
 /* When a user posts a pic, this updates the number of posts for that user */
 DROP TRIGGER IF EXISTS update_post_count;
-DELIMITER //
+DELIMITER
+ //
 CREATE TRIGGER update_post_count
     AFTER INSERT 
     ON posts
