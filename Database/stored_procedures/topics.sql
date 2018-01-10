@@ -34,7 +34,7 @@ DELIMITER ;
 
 /* ------------------------------------------------------------------------------------------ */
 
-/* It displays either the current topic or previous topic based on the is_current value */
+/* It displays either the current topic or the previous topic based on the is_current value */
 /* QUESTION: What if the limit value (or) is_current is null, when this stored procedure is called. */
 DROP PROCEDURE IF EXISTS get_topics;
 DELIMITER
