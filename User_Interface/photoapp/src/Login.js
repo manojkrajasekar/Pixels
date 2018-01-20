@@ -18,7 +18,7 @@ class Login extends Component {
                         <div className="signUp">
                             Don't have an account yet ?
                                 <span className="sign">
-                                    Sign Up
+                                    SignUp
                                 </span>
                         </div>
                     </div>
