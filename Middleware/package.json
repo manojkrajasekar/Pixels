@@ -1,6 +1,9 @@
 {
   "name": "middleware",
   "version": "1.0.0",
+  "engines": {
+    "node": "8.9.4"
+  },
   "description": "\"\"\u001b[DNode JS\"\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[D for heroku\"",
   "main": "index.js",
   "scripts": {
@@ -12,6 +15,6 @@
     "express": "^4.16.2"
   },
   "scripts": {
-    "start":"node index.js"
+    "start":"index.js"
   }
 }
