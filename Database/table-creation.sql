@@ -1,6 +1,6 @@
 
 /*This is to use the photoapp database*/
-USE testDB;
+USE photoapp;
 
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS votes;
