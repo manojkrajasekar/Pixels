@@ -1,18 +1,48 @@
 .App {
   text-align: center;
-  display-inline: flex;
+  border-style: solid;
+  border-width: 1px;
 }
 
 .App-header {
+  
   background-color: #199dd1;
-  min-height: 20%;
-  padding: 20px;
+  height: 8%;
+  padding: 15px; 
   color: white;
 }
 
 .App-title {
+  display: inline-block;
+  margin-right: 150px;
   font-size: 3vw;
-  margin: 5px;
+  margin-bottom: 15px;
+  float: left;
+  
+}
+
+
+.userName {
+  display: inline-block;
+  margin-left: 5px;
+  width:5%;
+  height: 40px;
+  text-align: center;
+  font-size: 2vw;
+  
+  /* float: left;  */
+}
+
+
+.SearchBar {
+  display: inline-block;
+  margin-left: 50px;
+  background-color: bisque;
+  width: 35%;
+  height: 40px;
+  font-size: 1vw;
+  border-radius: 10px;
+  flex-shrink: 2;
 }
 
 @keyframes App-logo-spin {
