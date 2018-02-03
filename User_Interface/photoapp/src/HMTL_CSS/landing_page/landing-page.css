@@ -300,7 +300,6 @@ img {
 }
 
 .content > .topic > .topic-details > .available-till {
-    /* position: absolute;  */
     text-align: right;
     margin: 0px 0px 5px 15px;
     width: 32%;
@@ -310,8 +309,6 @@ img {
 }
 
 .content > .topic > .topic-details > .time-limit {
-    /* border-width: 1px;
-    border-style: solid; */
     margin: 0px 0px 5px 5px;
     width: 45%;
     height: 50px;
@@ -337,7 +334,7 @@ img {
 
 .content > .topic > .previous-topics > .view-topics {
     float: left;
-    width: 65%;
+    width: 66%;
 }
 
 .content > .topic > .previous-topics > .view {
@@ -354,13 +351,9 @@ img {
     width: 85%;
     height: 120px;
     text-align: center;
-    /* background-color: lightblue; */
-    margin-top: 20px;
 }
 
 .content > .topic > #myDIV > .prev-topic-title {
-    /* border-style: solid;
-    border-width: 1px; */
     margin:auto;
     width:95%;
     height:25px;
@@ -372,31 +365,24 @@ img {
 }
 
 .content > .topic > #myDIV > .prev-topic-title > .prev-title {
-    /* border-style: solid;
-    border-width: 1px; */
     margin-left: 15px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .content > .topic > #myDIV > .prev-topic-title > .no-of-posts {
-    /* border-style: solid;
-    border-width: 1px; */
     margin-left: 1px;
 }
 
 .content > .topic > #myDIV > .prev-topic-title > .number {
-   
     margin-left: 10px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
 
 .content > .topic > #myDIV > .prev-topic-title > .available-week {
-    
     margin-left: 5px;
 }
 
 .content > .topic > #myDIV > .prev-topic-title > .week {
-    
     margin-left: 15px;
     font-size: 1vw;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
