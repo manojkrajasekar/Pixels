@@ -299,7 +299,7 @@ img {
     float: left;
 }
 
-.content > .topic > .topic-details > .time-limit {
+.content > .topic > .topic-details > .available-till {
     /* position: absolute;  */
     text-align: right;
     margin: 0px 0px 5px 15px;
@@ -309,7 +309,7 @@ img {
     font-size: 1vw;
 }
 
-.content > .topic > .topic-details > .time-limi {
+.content > .topic > .topic-details > .time-limit {
     /* border-width: 1px;
     border-style: solid; */
     margin: 0px 0px 5px 5px;
