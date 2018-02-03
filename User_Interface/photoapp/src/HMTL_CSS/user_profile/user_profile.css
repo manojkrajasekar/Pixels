@@ -1,0 +1,218 @@
+.container {
+    display: -webkit-flex;
+    flex-direction: column;
+    height: auto;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.header {
+    border-width: 1px;
+    border-style: solid;
+    display: flex;
+    height: 60px; 
+    background-color: #199dd1;
+}
+
+.header > .App-title {
+    margin: 5px 220px 10px 5px;
+    /* border-width: 1px;
+    border-style: solid; */
+    /* background-color: red; */
+    height: 45px;
+    font-size: 3vw;
+    margin-bottom: 15px;
+}
+
+.header >.add-a-post {
+    margin-top: 15px;
+    border-style: solid;
+    border-width: 1px;
+    width:8%;
+    height:48%;
+    background-color: white;
+    color: rgb(89, 89, 240);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5vw;
+}
+
+
+
+.header > .Search-bar {
+    width: 33%;
+    height: 50%;
+    margin: 13px 60px 10px 20px;
+    border-width: 1px;
+    border-style: solid;
+    background-color: white;
+    border-radius: 7px;
+}
+
+.header > .log-out {
+    margin-top: 20px;
+    margin-left: 300px; 
+    border-style: solid;
+    border-width: 1px;
+    width: 5%;
+    text-align: center;
+    font-size: 1.5vw;
+    height: 25px;
+    float: right;
+}
+
+.main-content {
+    height:auto;
+    margin: auto;
+    display: flex;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.main-content > .content {
+    margin:auto;
+    width:55%;
+    height:auto;
+    display: flex;
+    flex-wrap: wrap;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.main-content > .content > .user-profile {
+    display:flex;
+    flex-direction: column;
+    margin: 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    height:200px;
+    float: left;
+    width:20%;
+}
+
+.main-content > .content > .user-profile > .user-pic {
+    margin: 15px;
+    border-style: solid;
+    border-width: 1px;
+    height:60%;
+    float: left;
+    width:80%;
+}
+
+.main-content > .content > .user-profile  > .edit-profile {
+    margin-left: 15px;
+    margin-top: 5px;
+    border-style: solid;
+    border-width: 1px;
+    height:30px;
+    padding-top: 2px;
+    text-align: center;
+    float: left;
+    width:80%;
+    border-radius: 10px;
+    font-size: 1.5vw;
+}
+
+.main-content > .content > .user-details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:60%;
+    height:190px;
+    float: left;
+    padding-top: 8px;
+    text-align: center;
+    font-size:2vw;
+
+}
+
+.main-content > .content > .user-details > .user-name {
+    margin: 3px 25px 5px 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:70%;
+    height:30px;
+    float: left;
+    padding-top: 8px;
+    text-align: left;
+    font-size:1.5vw;
+    font-weight: bold;
+}
+
+.main-content > .content > .user-details > .user-email {
+    margin: 5px 25px 5px 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:80%; 
+    height:40px;
+    padding-top: 8px;
+    font-size:1.5vw;
+    text-align:left;
+    font-weight: bold;
+}
+
+.main-content > .content > .user-details > .user-email {
+    margin: 5px 25px 5px 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:80%;
+    height:40px;
+    padding-top: 8px;
+    font-size:1.5vw;
+    text-align: left;
+    font-weight: bold;
+}
+
+.main-content > .content > .user-details > .total-posts {
+    margin: 5px 25px 5px 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:80%;
+    height:40px;
+    padding-top: 8px;
+    font-size:1.5vw;
+    text-align: left;
+    font-weight:bold;
+}
+
+.main-content > .content > .user-posts {
+    display: flex;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:90%;
+    height:300px;
+    margin:auto;
+}
+
+
+.main-content > .content > .user-posts >.post {
+    margin:30px;
+    /* border-style: solid;
+    border-width:1px; */
+    width:40%;
+    height:250px;
+    float: left;
+}
+
+.main-content > .content > .user-posts >.post >.post-pic {
+    margin-top:25px;
+    
+    border-style: solid;
+    border-width:1px;
+    width:80%;
+    height:70%;
+}
+
+
+
+.main-content > .content > .user-posts >.post >.votes {
+    margin-top: 3px;
+    margin-left: 2px;
+    font-size: 1vw;
+}
+
