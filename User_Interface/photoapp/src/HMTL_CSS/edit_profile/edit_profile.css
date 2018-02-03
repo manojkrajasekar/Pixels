@@ -1,0 +1,220 @@
+.container {
+    display: -webkit-flex;
+    flex-direction: column;
+    height: auto;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.header {
+    border-width: 1px;
+    border-style: solid;
+    display: flex;
+    width:100%;
+    height: 60px; 
+    background-color: #199dd1;
+}
+
+.header > .App-title {
+    margin: 5px 200px 10px 0px;
+    /* border-width: 1px;
+    border-style: solid; */
+    /* background-color: red; */
+    height: 45px;
+    font-size: 3vw;
+    margin-bottom: 15px;
+}
+
+.header >.add-a-post {
+    margin-top: 15px;
+    border-style: solid;
+    border-width: 1px;
+    width:8%;
+    height:40%;
+    background-color: white;
+    color: rgb(89, 89, 240);
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.5vw;
+}
+
+.header > .Search-bar {
+    width: 35%;
+    height: 50%;
+    margin: 13px 10px 10px 30px;
+    border-width: 1px;
+    border-style: solid;
+    background-color: white;
+    border-radius: 7px;
+}
+
+.header > .log-out {
+    margin-top: 20px;
+    margin-left: 310px; 
+    border-style: solid;
+    border-width: 1px;
+    width: 5%;
+    text-align: center;
+    font-size: 1vw;
+    height: 25px;
+    float: right;
+}
+
+.main-content {
+    height:auto;
+    display: flex;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.main-content > .content {
+    margin:auto;
+    width:55%;
+    height:auto;
+    display: flex;
+    flex-wrap: wrap;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.main-content > .content > .user-profile {
+    display:flex;
+    flex-direction: column;
+    margin: 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    height:200px;
+    float: left;
+    width:20%;
+}
+
+.main-content > .content > .user-profile > .user-pic {
+    margin: 15px;
+    border-style: solid;
+    border-width: 1px;
+    height:60%;
+    float: left;
+    width:80%;
+}
+
+.main-content > .content > .user-details {
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:60%;
+    height:190px;
+    float: left;
+    padding-top: 8px;
+    text-align: center;
+    font-size:2vw;
+
+}
+
+.main-content > .content > .user-details > .user-name {
+    margin: 3px 25px 5px 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:70%;
+    height:30px;
+    float: left;
+    padding-top: 8px;
+    text-align: left;
+    font-size:1.5vw;
+    font-weight: bold;
+}
+
+
+.main-content > .content > .user-details > .user-email {
+    margin: 5px 25px 5px 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:80%;
+    height:40px;
+    padding-top: 8px;
+    font-size:1.5vw;
+    text-align: left;
+}
+
+.main-content > .content > .user-details > .total-posts {
+    margin: 5px 25px 5px 25px;
+    /* border-style: solid;
+    border-width: 1px; */
+    width:80%;
+    height:40px;
+    padding-top: 8px;
+    font-size:1.5vw;
+    text-align: left;
+    font-weight:bold;
+}
+
+.main-content > .content > .edit-section {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 1px; 
+    width:90%;
+    height:300px;
+    margin:auto;
+}
+
+.main-content > .content > .edit-section > .edit-username {
+    display: flex;
+    border-style: solid;
+    border-width: 1px; 
+    width:70%;
+    height:20%;
+    margin:auto;
+}
+
+.main-content > .content > .edit-section > .edit-username > .username {
+    /* border-style: solid;
+    border-width: 1px;  */
+    width:40%;
+    height:50%;
+    margin:10px;
+    text-align: center;
+    font-size: 2vw;
+}
+
+.main-content > .content > .edit-section > .edit-username > .enter-username {
+    border-style: solid;
+    border-width: 1px; 
+    width:40%;
+    height:50%;
+    margin:12px;
+    text-align: center;
+    font-size: 2vw;
+}
+
+
+.main-content > .content > .edit-section > .save-changes {
+    border-style: solid;
+    border-width: 1px; 
+    width:70%;
+    height:20%;
+    margin:auto;
+}
+
+.main-content > .content > .edit-section > .save-changes > .cancel {
+    width:40%;
+    height:50%;
+    margin:auto;
+    text-align: center;
+    font-size: 2vw;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.main-content > .content > .edit-section > .save-changes > .submit-changes {
+    border-style: solid;
+    border-width: 1px;
+    font-size: 2vw;
+    width:40%;
+    height:70%;
+    margin:10px;
+}
