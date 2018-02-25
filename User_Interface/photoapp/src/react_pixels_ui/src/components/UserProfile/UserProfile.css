@@ -1,0 +1,10 @@
+.Content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    /* margin: auto; */
+    border-style: solid;
+    border-width: 1px;
+}

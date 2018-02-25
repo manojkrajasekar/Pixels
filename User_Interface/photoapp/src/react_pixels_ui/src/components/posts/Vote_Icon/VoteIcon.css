@@ -1,0 +1,13 @@
+.Camera {
+    display: flex;
+    height: 10%;
+    border-style: solid;
+    width: 10%;
+    border-width: 1px;
+}
+
+.Camera:hover {
+    cursor: pointer;
+    color: bisque;
+
+}
