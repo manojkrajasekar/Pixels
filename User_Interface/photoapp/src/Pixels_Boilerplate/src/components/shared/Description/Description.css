@@ -1,0 +1,31 @@
+.Description {
+    margin: 8px 15px 5px 15px;
+    padding-top: 5px;
+    width: 90%;
+    min-height: 25px;
+    text-align: justify;
+    font-size: 1vw;
+}
+
+.Description >.user {
+    margin-left: 5px;
+    width: 10%;
+    font-weight: bolder; 
+}
+
+.Description > .Descriptioncontent {
+    margin: 18px 15px 15px 5px;
+    padding-top: 5px;
+    width: 95%;
+    min-height: 25px;
+    text-align: justify;
+    font-size: 1vw;
+}
+
+
+.Description > .posted-time {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    color:grey;
+    font-size: 0.5vw;
+}
