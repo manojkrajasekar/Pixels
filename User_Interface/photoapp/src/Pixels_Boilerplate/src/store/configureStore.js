@@ -9,14 +9,4 @@ const store = createStore(
     })
 );
 
-
-const  demoState = {
-    comments: [{
-        description: 'poons',
-        commented_by: 'mamama'
-    }],
-};
-
-console.log(store.getState());
-
 export default store;

@@ -27,7 +27,7 @@ ReactModalPortal .ReactModal__Overlay--before-close {
     border-width: 1px;
     background-color: whitesmoke;
     width:30%;
-    height: 50%;
+    height: 70%;
 }
 
  .modal > .PostDescription {
