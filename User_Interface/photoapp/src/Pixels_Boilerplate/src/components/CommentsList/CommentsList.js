@@ -1,12 +1,13 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import CommentsListItem from '../shared/Comments/ViewComment/CommentsListItem';
+import DeleteCommentsList from './DeleteCommentsList';
 
 const CommentsList = (props) => (
     <div>
         <div>
            {props.comments.map((comment) => {
-            return <CommentsListItem key={comment.id}  {...comment} />
+            return <DeleteCommentsList key={comment.id}  {...comment} />
            })}
         </div>
     </div>

@@ -10,8 +10,10 @@ import PostDetail from '../shared/PostDetail/PostDetail.js';
 import VoteIcon from '../posts/Vote_Icon/VoteIcon';
 import './Posts.css';
 import CommentsList from '../CommentsList/CommentsList';
+import DeleteCommentsList from '../CommentsList/DeleteCommentsList';
 import VotesList from '../../components/VotesList/VotesList';
-// import store from '../../store/configureStore';
+import { DeleteComment } from '../../actions/comments';
+import store from '../../store/configureStore';
 // import { AddComment } from '../../actions/comments';
 
 //import axios from 'axios';
@@ -52,7 +54,10 @@ class Posts extends Component {
                         </div>
                         <Votes />
                         <Description />
-                        <CommentsList />
+                        
+                         <CommentsList />
+                        
+                         
                         <AddC />
                     </div>
                     <div className="post">

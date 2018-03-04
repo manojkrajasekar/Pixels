@@ -17,7 +17,7 @@ import { Provider } from 'react-redux';
 // import './styles/styles.scss';
 
 //const store = store();
-store.dispatch(AddComment({ comment:'Vera level', commented_by: 'Mano'}));
+store.dispatch(AddComment({ comment:'Interesting Snap', commented_by: 'Mano'}));
 // store.dispatch(AddComment({ comment:'Swag Mapla', commented_by: 'Senthu'}));
 // store.dispatch(AddComment({ comment:'Dispatching', commented_by: 'Lako'}));
 // const sample = store.dispatch(AddComment({ comment:'Marvellous', commented_by: 'ky'}));
