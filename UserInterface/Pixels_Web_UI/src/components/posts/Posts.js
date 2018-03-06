@@ -14,10 +14,6 @@ import DeleteCommentsList from '../CommentsList/DeleteCommentsList';
 import VotesList from '../../components/VotesList/VotesList';
 import { DeleteComment } from '../../actions/comments';
 import store from '../../store/configureStore';
-// import { AddComment } from '../../actions/comments';
-
-//import axios from 'axios';
-//import ImagesModal from '../ImagesUpload/ImagesModal';
 
 class Posts extends Component {
     
