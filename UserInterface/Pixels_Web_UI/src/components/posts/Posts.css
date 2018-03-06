@@ -1,0 +1,127 @@
+.posts {
+    display: flex;
+    flex-direction: column;
+    margin-top:4%; 
+    margin-left: 32%; 
+    align-content: left;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    width: 33%;
+    height: auto; 
+    font-size: 2vw;
+    border-radius: 10px;
+}
+
+.posts > .post {
+    /* display: flex; */
+    margin: 15px 0px 35px 15px;
+    width: 95%;
+    height: 560px; 
+    font-size: 1vw;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.posts > .post > .posted_by {
+    font-size: 25px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    margin-left: 12px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    image-rendering: crisp-edges;
+}
+.posts > .post > .post-pic {
+    margin: 5px 15px 5px 15px;
+    width: 95%;
+    min-height: 210px; 
+    font-size: 2vw;
+}
+
+.posts > .post >.post-pic:hover {
+    cursor: pointer;
+}
+
+.posts > .post > .votecount {
+    font-weight: bold;
+    margin-left: 45px;
+}
+
+.posts > .post >.votes {
+    margin-left: 2px;
+}
+
+ .posts > .post > .Description {
+    margin: 8px 15px 0px 15px;
+    
+    width: 90%;
+    min-height: 25px;
+    text-align: justify;
+    font-size: 1vw;
+}
+
+.posts > .post > .Description >.user {
+    margin-left: 5px;
+    width: 10%;
+    font-weight: bolder;
+}
+
+.posts > .post > .Description > .Description-content {
+    /* margin: 18px 15px 15px 5px; */
+    margin: 10px;
+    width: 95%;
+    min-height: 25px;
+    text-align: justify;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+
+.posts > .post > .Description > .posted-time {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    color:grey;
+    font-size: 0.5vw;
+}
+
+.posts > .post > .comments {
+    /* border-style: solid;
+    border-width:1px; */
+    margin-left: 19px;
+    width: 90%;
+    height:50px;
+    border-bottom: 0.5px solid rgb(199, 196, 196);
+}
+
+.posts > .post > .comments > .commented-by {
+    margin-left: 2px;
+    margin-bottom: 15px;
+    width: 10%;
+    font-weight: bolder;
+}
+
+.posts > .post > .comments > .comment-content {
+    margin-left: 8px;
+    margin-bottom: 15px;
+    width: 10%;
+}
+
+
+.posts > .post > .comments > .view-comments {
+    color: grey;
+    margin-left: 4px;
+    margin-bottom: 5px;
+    font-size: 1vw;
+   
+}
+
+.posts > .post >  .add-comment {
+    margin-top: 5px;
+    margin-left: 22px;
+    color: grey;
+    font-size: 1vw;
+}

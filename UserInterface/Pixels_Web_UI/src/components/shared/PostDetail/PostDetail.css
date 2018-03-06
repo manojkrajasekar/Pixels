@@ -1,0 +1,213 @@
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-left: 31%; 
+    align-content: left;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    width: 33%;
+    border-radius: 10px;
+}
+
+.wrapper >.Mainposts {
+    display: flex;
+    flex-direction: column;
+    margin-top:8%;
+    margin-left: 2%; 
+    width: 95%;
+    height: 900px; 
+    font-size: 2vw;
+    border-radius: 10px;
+}
+
+.wrapper > .Mainposts > .PostDetails {
+    margin: 15px 0px 35px 15px;
+    width: 95%;
+    height: 490px; 
+    font-size: 1vw;
+    display: inline-block;
+}
+
+.wrapper > .Mainposts > .PostDetails > .By {
+    margin: 5px 0px 0px 15px;
+    width: 15%;
+    min-height: 5px; 
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.wrapper > .Mainposts > .PostDetails > .TopicDetails {
+    display: flex;
+    margin:5px;
+    flex-direction: row;
+}
+
+.wrapper > .Mainposts > .PostDetails > .TopicDetails > .Topic {
+    font-size: 17px;
+    font-family: sans-serif;
+    padding-top: 5px;
+}
+
+.wrapper > .Mainposts > .PostDetails > .TopicDetails > .Topic-content {
+    font-size: 25px;
+    font-family: sans-serif;
+    margin-left: 10px;
+
+}
+
+.wrapper > .Mainposts > .PostDetails > .UserDetails {
+    display: flex;
+    margin:7px;
+    flex-direction: row;
+}
+
+.wrapper > .Mainposts > .PostDetails > .UserDetails > .UserName {
+    padding-top: 5px;
+    font-size: 17px;
+    font-family: sans-serif;
+}
+
+.wrapper > .Mainposts > .PostDetails > .UserDetails > .User {
+    font-size: 25px;
+    font-family: sans-serif;
+    margin-left: 10px;
+}
+
+img {
+   image-rendering: crisp-edges;
+}
+
+.wrapper > .Mainposts > .PostDetails >.Pic {
+    margin: 5px 15px 5px 15px;
+    width: 95%;
+    min-height: 210px; 
+}
+
+/* .wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 10%;
+    margin-left: 32%; 
+    align-content: left;
+    border-style: solid;
+    border-width: 1px;
+    border-color: lightgray;
+    width: 33%;
+    height: auto; 
+    font-size: 2vw;
+    border-radius: 10px;
+}
+
+.wrapper > .post {
+   
+    margin: 15px 0px 35px 15px;
+    width: 95%;
+    height: 560px; 
+    font-size: 1vw;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.wrapper > .post > .posted_by {
+    font-size: 25px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    margin-left: 12px;
+}
+
+img {
+    max-width: 100%;
+    max-height: 100%;
+    image-rendering: crisp-edges;
+}
+.wrapper > .post > .post-pic {
+    margin: 5px 15px 5px 15px;
+    width: 95%;
+    min-height: 210px; 
+    font-size: 2vw;
+}
+
+.wrapper > .post >.post-pic:hover {
+    cursor: pointer;
+}
+
+.wrapper > .post > .votecount {
+    font-weight: bold;
+    margin-left: 45px;
+}
+
+.wrapper > .post >.votes {
+    margin-left: 2px;
+}
+
+ .wrapper > .post > .Description {
+    margin: 8px 15px 0px 15px;
+    
+    width: 90%;
+    min-height: 25px;
+    text-align: justify;
+    font-size: 1vw;
+}
+
+.wrapper > .post > .Description >.user {
+    margin-left: 5px;
+    width: 10%;
+    font-weight: bolder;
+}
+
+.wrapper > .post > .Description > .Description-content {
+  
+    margin: 10px;
+    width: 95%;
+    min-height: 25px;
+    text-align: justify;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+
+.wrapper > .post > .Description > .posted-time {
+    margin-left: 5px;
+    margin-bottom: 5px;
+    color:grey;
+    font-size: 0.5vw;
+}
+
+.wrapper > .post > .comments {
+    
+    margin-left: 19px;
+    width: 90%;
+    height:50px;
+    border-bottom: 0.5px solid rgb(199, 196, 196);
+}
+
+.wrapper > .post > .comments > .commented-by {
+    margin-left: 2px;
+    margin-bottom: 15px;
+    width: 10%;
+    font-weight: bolder;
+}
+
+.wrapper > .post > .comments > .comment-content {
+    margin-left: 8px;
+    margin-bottom: 15px;
+    width: 10%;
+}
+
+
+.wrapper > .post > .comments > .view-comments {
+    color: grey;
+    margin-left: 4px;
+    margin-bottom: 5px;
+    font-size: 1vw;
+   
+}
+
+.wrapper > .post >  .add-comment {
+    margin-top: 5px;
+    margin-left: 22px;
+    color: grey;
+    font-size: 1vw;
+} */

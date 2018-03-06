@@ -1,0 +1,151 @@
+.Topics {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1px;
+    border-color: lightgray;
+    margin-top: 98px;
+    margin-left: 70%; 
+    width: 22%;
+    height: 420px;
+    color: #47494D;    
+    position: fixed;
+}
+
+.Topics > .topic-details {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    height:55px;
+    margin-top: 25px;
+}
+
+.Topics > .topic-details > .topic-title {
+    margin:25px 0px 10px 15px;
+    width: 32%;
+    height: 50px;
+    font-size: 20px;
+    font-family: sans-serif;
+    text-align: right;
+    color: black;
+    float: left;
+}
+
+.Topics > .topic-details > .topic-content {
+    margin:25px 5px 10px 10px;
+    width: 32%;
+    height: 35%;
+    font-size: 20px;
+    font-family: sans-serif;
+    font-weight: bold;
+    float: left;
+    letter-spacing: 1px;
+}
+
+.Topics > .topic-details > .available-till {
+    text-align: right;
+    margin: 0px 0px 5px 15px;
+    width: 36%;
+    height: 50px;
+    float: left;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.Topics > .topic-details > .time-limit {
+    margin: 0px 0px 5px 10px;
+    height: 50px;
+    font-weight: bold;
+    float: left;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+
+.Topics >.previous-topics {
+    display: flex;
+    flex-direction: row;
+    border-radius: 15px;
+    border-style: solid;
+    border-width: 1px;
+    margin: 65px 10px 5px 25px;
+    width: 75%;
+    height: 40px;
+    font-size: 1.25vw;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.Topics > .previous-topics > .view-topics {
+    font-size: 1.25vw; 
+    float: left;
+    width: 65%;
+}
+
+.Topics > .previous-topics > .view {
+    margin-left: 10px;
+    cursor: pointer;
+    float: left;
+}
+
+.Topics > .view-previous {
+    display: flex;
+    flex-direction: column;
+    border-style: solid;
+    border-width: 1px;
+    border-radius:5px;
+    margin: 0px 5px 5px 25px;
+    width: 85%;
+    height: 180px;
+    text-align: center;
+    display: none;
+    margin-top: 20px;
+}
+
+.Topics > .view-previous > .prev-topic-title {
+    display: flex;
+    flex-direction: row;
+    margin:auto;
+    width:90%;
+    height:25px;
+}
+
+.Topics > .view-previous > .prev-topic-title > .prev-topic {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-top: 5px;
+    margin-left: 15px;
+    font-size: 1.25vw;
+}
+
+.Topics > .view-previous > .prev-topic-title > .prev-title {
+    margin-left: 15px;
+    font-family: cursive;
+    font-size: 1.5vw;
+}
+
+.Topics > .view-previous > .prev-topic-title > .no-of-posts {
+    margin-top: 5px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    margin-left: 15px;
+    font-size: 1.25vw;
+}
+
+.Topics > .view-previous > .prev-topic-title > .number {
+    margin-left: 10px;
+    font-family: cursive;
+    font-size: 1.5vw;
+}
+
+.Topics > .view-previous > .prev-topic-title > .available-week {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.25vw;
+    margin-left: 10px;
+}
+
+.Topics > .view-previous > .prev-topic-title > .week {
+    font-weight: 600;
+    margin-left: 15px;
+    font-size: 1.25vw;
+    font-family: cursive;
+}
