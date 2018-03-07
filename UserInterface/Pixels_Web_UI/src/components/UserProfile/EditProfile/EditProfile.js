@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import Header from '../shared/Header/Header.js';
-import UserDetails from '../shared/UserDetails/UserDetails';
+import Header from '../../Layout/Header/Header';
+import UserDetails from '../UserDetails/UserDetails';
 import EditSection from './EditSection/EditSection.js';
 import './EditProfile.css';
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Modal from 'react-modal';
 import { Button } from 'react-bootstrap';
-import DropImage from '../shared/DropImage/DropImage';
+import DropImage from './DropImage/DropImage';
 import './ImagesModal.css';
 
 class ImagesModal extends Component {

@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Link, Switch } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import Header from '../../shared/Header/Header.js';
-import PostsByTopic from '../../PostsByTopic/PostsByTopic';
-import UserProfile from '../../UserProfile/UserProfile';
-import EditProfile from '../../EditProfile/EditProfile';
-import PostDetail from '../../shared/PostDetail/PostDetail';
-import PageNotFound from '../PageNotFound/PageNotFound';
-import Landing_page from '../../Landing_page/Landing_page.js';
+import Header from '../Layout/Header/Header';
+import PageNotFound from '../Layout/PageNotFound/PageNotFound';
+import PostsList from '../posts/PostsList';
+import UserProfile from '../UserProfile/UserProfile';
+import EditProfile from '../UserProfile/EditProfile/EditProfile';
+import PostDetail from '../shared/PostDetail/PostDetail';
+import LandingPage from '../LandingPage/LandingPage';
 import './Content.css';
 
 class Content extends Component {
@@ -19,8 +19,8 @@ class Content extends Component {
                 </div>
                 <div>
                     <Switch>
-                        <Route exact path="/"  component={Landing_page}/>
-                        <Route exact path="/posts" component={PostsByTopic} />
+                        <Route exact path="/"  component={LandingPage}/>
+                        <Route exact path="/postsList" component={PostsList} />
                         <Route exact path="/user" component={UserProfile} />
                         <Route exact path="/edit" component={EditProfile} />
                         <Route exact path="/post" component={PostDetail} />

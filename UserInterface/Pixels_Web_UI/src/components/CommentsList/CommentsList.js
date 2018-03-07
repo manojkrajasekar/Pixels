@@ -1,30 +1,8 @@
-//  import React from 'react';
-//  import { connect } from 'react-redux';
-//  import CommentsListItem from '../shared/Comments/ViewComment/CommentsListItem';
+import React from 'react';
+import { connect } from 'react-redux';
+import DeleteCommentsList from '../CommentsList/DeleteCommentsList';
 
-//  const CommentsList = (props) => (
-//      <div>
-//          <div>
-//             {props.comments.map((comment) => {
-//              return <CommentsListItem key={comment.id}  {...comment} />
-//             })}
-//          </div>
-//      </div>
-//  );
-
-//  const mapStateToProps = (state) => {
-//      return {
-//          comments:state.comments
-//      };
-//  };
-
-//  export default connect(mapStateToProps)(CommentsList);
-
- import React from 'react';
- import { connect } from 'react-redux';
- import DeleteCommentsList from '../CommentsList/DeleteCommentsList';
-
- const CommentsList = (props) => (
+const CommentsList = (props) => (
      <div>
          <div>
             {props.comments.map((comment) => {
@@ -32,13 +10,13 @@
             })}
          </div>
      </div>
- );
+);
 
- const mapStateToProps = (state) => {
-     return {
-         comments:state.comments
-     };
- };
+const mapStateToProps = (state) => {
+    return {
+        comments:state.comments
+    };
+};
 
  export default connect(mapStateToProps)(CommentsList);
 

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 import { withRouter } from 'react-router-dom';
-import ImagesModal from '../../ImagesUpload/ImagesModal';
+import ImagesModal from '../Header/ImagesUpload/ImagesModal';
 
 class Header extends Component {
     state = {

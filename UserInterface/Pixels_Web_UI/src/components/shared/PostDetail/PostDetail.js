@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Header from '../Header/Header';
+import Header from '../../Layout/Header/Header';
 import ViewComment from '../Comments/ViewComment/ViewComment.js';
 import AddaComment from '../Comments/AddComment/AddaComment';
 import Description from '../Description/Description.js';

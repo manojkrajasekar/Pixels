@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
-import Posts from '../posts/Posts.js';
-import Bestfind from '../Bestfind/Bestfind.js';
+import PostsList from '../posts/PostsList';
+import Bestfind from './Bestfind/Bestfind';
 import Topics from '../shared/Topics/Topics.js';
-import './Landing_page.css';
+import './LandingPage.css';
 
 class Landing_page extends Component {
     render() {
         return (
-            <div className="Landing_page">
+            <div className="Landing_page">  
                 <Bestfind />
-                <Posts />
+                <PostsList />
                 <Topics />
             </div>
         );
