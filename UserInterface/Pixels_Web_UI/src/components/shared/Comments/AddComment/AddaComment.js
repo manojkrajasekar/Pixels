@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './AddaComment.css';
 import moment from 'moment';
 import store from '../../../../store/configureStore'
-import { AddComment } from '../../../../actions/comments';
+import { AddComment } from '../../../../actions/commentsAction';
 
 class AddaComment extends Component {
     state = {

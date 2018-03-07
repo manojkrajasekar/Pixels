@@ -7,7 +7,7 @@ import './EditProfile.css';
 class EditProfile extends Component {
     render(){
         return (
-            <div className="wrapper">
+            <div className="EditPage">
                 <div className="EditProfile">
                     <UserDetails />
                     <EditSection />

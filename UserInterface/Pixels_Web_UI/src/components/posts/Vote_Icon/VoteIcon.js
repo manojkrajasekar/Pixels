@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './VoteIcon.css';
 import store from '../../../store/configureStore';
-import { AddVote } from '../../../actions/votes';
+import { AddVote } from '../../../actions/votesAction';
 
 
 class VoteIcon extends React.Component {

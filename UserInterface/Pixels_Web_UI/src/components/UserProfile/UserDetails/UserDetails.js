@@ -8,7 +8,6 @@ class UserDetails extends Component {
     }
     render() {
         return(
-            
                 <div className="User-Details">
                     <div className="user-profile">
                         <div className="user-pic"></div>

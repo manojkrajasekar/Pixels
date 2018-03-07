@@ -1,0 +1,19 @@
+.postWrapper {
+    display: flex;
+    width: 50%;
+}
+
+
+.posted_by {
+    font-size: 25px;
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    margin-left: 12px;
+}
+
+.post-pic {
+    margin: 5px 15px 5px 15px;
+    width: 95%;
+    min-height: 210px; 
+    font-size: 2vw;
+}

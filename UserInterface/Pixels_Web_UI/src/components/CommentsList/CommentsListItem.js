@@ -1,9 +1,9 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { DeleteComment } from '../../actions/comments';
-import './DeleteCommentsList.css';
+import { DeleteComment } from '../../actions/commentsAction';
+import './CommentsListItem.css';
 
-const DeleteCommentsList = ({dispatch, id, commented_by, comment, commented_on}) => (
+const CommentsListItem = ({dispatch, id, commented_by, comment, commented_on}) => (
     <div>
         <div className="wrapper">
                 <div className="commented_by">{commented_by}</div>   
@@ -22,4 +22,4 @@ const DeleteCommentsList = ({dispatch, id, commented_by, comment, commented_on})
     </div>
 );
 
-export default connect()(DeleteCommentsList);
+export default connect()(CommentsListItem);

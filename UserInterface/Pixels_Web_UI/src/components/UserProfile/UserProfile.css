@@ -1,9 +1,7 @@
 .UserPage {
     display: flex;
     justify-content: center;
-
 }
-
 
 .UserPosts {
     display: flex;

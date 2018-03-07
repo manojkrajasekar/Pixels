@@ -10,8 +10,8 @@ class EditSection extends Component {
                     <span className="enter-username"></span>
                 </div>
                 <div className="save-changes">
-                    <span className="cancel">Cancel</span>
-                    <sapn className="submit-changes">Save changes</sapn>
+                    <div className="cancel">Cancel</div>
+                    <div className="submit-changes">Save changes</div>
                 </div>
             </div>
         );
