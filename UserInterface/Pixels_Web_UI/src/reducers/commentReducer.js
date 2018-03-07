@@ -1,13 +1,5 @@
-// const  commentsReducerDefaultState = {
-//     comments: [{
-//         description: '',
-//         commented_by: ''
-//     }],
-// };
-
 const commentsReducerDefaultState = [];
-//const commentReducer = (state = { count: 0, comment: undefined}, action) => {
-    const commentReducer = (state = commentsReducerDefaultState, action) => {
+const commentReducer = (state = commentsReducerDefaultState, action) => {
     switch(action.type){
         case 'ADD_COMMENT':
             return [

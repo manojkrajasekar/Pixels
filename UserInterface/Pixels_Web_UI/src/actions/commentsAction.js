@@ -16,15 +16,6 @@ import uuid from 'uuid';
          }
      });
 
-// export const Edit = ({id, updates} = {}) => {
-//     console.log('ajaja');
-//     return {
-//         type:'EDIT_COMMENT',
-//         id,
-//         updates
-//     };
-// };
-
 export const EditComment = (id, updates)  => ({
         type:'EDIT_COMMENT',
         id,

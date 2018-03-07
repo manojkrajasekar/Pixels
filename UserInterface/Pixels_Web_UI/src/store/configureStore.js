@@ -1,11 +1,13 @@
 import { createStore, combineReducers } from 'redux';
 import commentReducer from '../reducers/commentReducer'; 
 import votesReducer from '../reducers/votesReducer';
+import postsReducer from '../reducers/postsReducer';
 
 const store = createStore(
     combineReducers({
         comments: commentReducer,
-        votes: votesReducer
+        votes: votesReducer,
+        posts: postsReducer
     })
 );
 

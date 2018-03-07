@@ -2,14 +2,10 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { withRouter } from 'react-router-dom';
-import Content from '../src/components/shared/Content/Content';
-import PostsByTopic from './components/PostsByTopic/PostsByTopic';
-import UserProfile from './components/UserProfile/UserProfile';
-import EditProfile from './components/EditProfile/EditProfile';
-import PostDetail from './components/shared/PostDetail/PostDetail';
+import IndexPage from '../src/components/IndexPage/IndexPage';
 import store from './store/configureStore';
-import { AddComment, DeleteComment, EditComment } from './actions/comments';
-import { AddVote } from './actions/votes';
+import { AddComment, DeleteComment, EditComment } from './actions/commentsAction';
+import { AddVote } from './actions/votesAction';
 import { Provider } from 'react-redux';
 
 
@@ -17,7 +13,7 @@ class App extends Component {
     render() {
         return (
             <BrowserRouter>
-                <Content />
+                <IndexPage />
             </BrowserRouter>
         );
     }
