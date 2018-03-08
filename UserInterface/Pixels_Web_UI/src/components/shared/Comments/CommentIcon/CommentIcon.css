@@ -1,12 +1,13 @@
-.Camera {
+.CommentHere {
     display: flex;
-    height: 10%;
+    height: 25%;
     border-style: solid;
-    width: 50%;
+    width: 20%;
+    border-style: solid;
     border-width: 1px;
 }
 
-.Camera:hover {
+.CommentHere:hover {
     cursor: pointer;
     color: bisque;
 

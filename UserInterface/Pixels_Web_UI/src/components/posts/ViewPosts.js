@@ -8,6 +8,7 @@ import Description from '../shared/Description/Description.js';
 import Votes from '../shared/Votes/Votes.js';
 import PostDetail from '../shared/PostDetail/PostDetail.js';
 import VoteIcon from '../posts/Vote_Icon/VoteIcon';
+import CommentIcon from '../shared/Comments/CommentIcon/CommentIcon';
 import CommentsList from '../CommentsList/CommentsList';
 import CommentsListItem from '../CommentsList/CommentsListItem';
 import VotesList from '../../components/VotesList/VotesList';
@@ -17,9 +18,7 @@ import store from '../../store/configureStore';
 import './ViewPosts.css';
 import { AddPost } from '../../actions/postsAction';
 
-
 store.dispatch(AddPost({post_by:'Manoj', post_URL:'https:static.pexels.com/photos/161889/mill-car-flour-history-161889.jpeg'}));
-
 console.log(store.getState());
 
 class ViewPosts extends Component {
@@ -40,13 +39,10 @@ class ViewPosts extends Component {
                  <h1>{params.id}</h1>
                  <PostsList />
                  <div className="post">
-                      <div className="posted_by" onClick={this.GoToUser}>
-                          Vicky
-                      </div>
-                      <div className="post-pic" onClick={this.GoToPost}>
-                          <img src="https:static.pexels.com/photos/161889/mill-car-flour-history-161889.jpeg" />
-                      </div>
-                     <Votes />
+                     <div className="UserInteraction">
+                        <Votes />
+                        <CommentIcon />
+                     </div>
                      <Description />
                      <CommentsList />
                      <AddaComment />

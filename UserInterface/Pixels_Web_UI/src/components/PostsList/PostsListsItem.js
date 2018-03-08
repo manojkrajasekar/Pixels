@@ -27,15 +27,5 @@ class PostsListItem extends Component {
     }
 }
 
-// const PostsListItem = ({ post_by, post_URL, id }) => (
-//     <div>
-//         <div className="posted_by" onClick={this.GoToUser}>
-//             {post_by}
-//         </div>
-//         <div className="post-pic"><img src= {post_URL}/></div>
-//     </div>
-// );
-
-
 
 export default withRouter(PostsListItem);
