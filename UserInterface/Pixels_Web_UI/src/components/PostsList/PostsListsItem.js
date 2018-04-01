@@ -1,5 +1,9 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
+import AddaComment from '../shared/Comments/AddComment/AddaComment';
+import CommentsList from '../CommentsList/CommentsList';
+import CommentsListItem from '../CommentsList/CommentsListItem';
+import PostCommentsList from '../CommentsList/PostCommentsList';
 import './PostsListItem.css';
 
 class PostsListItem extends Component {
@@ -22,7 +26,9 @@ class PostsListItem extends Component {
                 <div className="post-pic" onClick={this.GoToPost}>
                     <img src={this.props.post_URL}/>
                 </div>
-            </div>
+                <CommentsList />
+                <AddaComment postID = {this.props.id}/>
+             </div>
         );
     }
 }

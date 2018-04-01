@@ -1,0 +1,49 @@
+.prev-topic-wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+    height: 30%;
+    margin: auto;
+    border-style: solid;
+    border-width: 1px;
+}
+
+.prev-topic-wrapper > .prev-topic-title {
+    display: flex;
+    margin: 3% auto;
+    border-style: solid;
+    border-width: 1px;
+    width: 65%;
+}
+
+.prev-topic-wrapper > .prev-topic-title > .topic {
+    font-size: 15px;
+    margin: 3%;
+}
+
+.prev-topic-wrapper > .prev-topic-title > .topic-title {
+    margin: 3%;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.prev-topic-wrapper > .topic-posts {
+    display: flex;
+    margin: 3% auto;
+    border-style: solid;
+    border-width: 1px;
+    width: 65%;
+}
+
+.prev-topic-wrapper > .topic-posts > .posts-count {
+    font-size: 15px;
+    margin: 3%;
+}
+
+.prev-topic-wrapper > .topic-posts > .total-posts-number {
+    margin: 3%;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+

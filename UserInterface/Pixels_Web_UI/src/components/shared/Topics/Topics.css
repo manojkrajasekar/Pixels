@@ -89,6 +89,11 @@
     float: left;
 }
 
+.Topics > .previous-topics > .view:hover {
+    transform: rotate(90deg);
+    -webkit-transform: scale(1) rotate(90deg) translate(0px, 0px);
+}
+
 .Topics > .view-previous {
     display: flex;
     flex-direction: column;

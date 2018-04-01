@@ -4,7 +4,8 @@ import uuid from 'uuid';
      { 
          comment = '',
          commented_by = '',
-         commented_on = ''
+         commented_on = '',
+         post_id
      } = {}
  ) => ({
          type: 'ADD_COMMENT',
@@ -12,7 +13,8 @@ import uuid from 'uuid';
              id: uuid(),
              comment,
              commented_by,
-             commented_on
+             commented_on,
+             post_id
          }
      });
 

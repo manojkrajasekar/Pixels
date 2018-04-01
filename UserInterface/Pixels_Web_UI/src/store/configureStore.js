@@ -1,24 +1,19 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers, applyMiddleware } from 'redux';
 import commentReducer from '../reducers/commentReducer'; 
 import votesReducer from '../reducers/votesReducer';
 import postsReducer from '../reducers/postsReducer';
+import thunk from 'redux-thunk';
+
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const store = createStore(
     combineReducers({
-        comments: commentReducer,
+        comments: commentReducer,   
         votes: votesReducer,
-        posts: postsReducer
-    })
+        posts: postsReducer,
+    }),
+    composeEnhancers(applyMiddleware(thunk))
 );
 
-
-const  demoState = {
-    comments: [{
-        description: 'poons',
-        commented_by: 'mamama'
-    }],
-};
-
 console.log(store.getState());
-
 export default store;

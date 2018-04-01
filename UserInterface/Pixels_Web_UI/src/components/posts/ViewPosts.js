@@ -19,7 +19,9 @@ import './ViewPosts.css';
 import { AddPost } from '../../actions/postsAction';
 
 store.dispatch(AddPost({post_by:'Manoj', post_URL:'https:static.pexels.com/photos/161889/mill-car-flour-history-161889.jpeg'}));
-console.log(store.getState());
+// store.dispatch(AddPost({post_by:'John', post_URL:'https:static.pexels.com/photos/161889/mill-car-flour-history-161889.jpeg'}));
+
+store.subscribe(() => {console.log(store.getState())});
 
 class ViewPosts extends Component {
 
@@ -39,14 +41,12 @@ class ViewPosts extends Component {
                  <h1>{params.id}</h1>
                  <PostsList />
                  <div className="post">
-                     <div className="UserInteraction">
+                     <div className="userInteraction">
                         <Votes />
                         <CommentIcon />
                      </div>
                      <Description />
-                     <CommentsList />
-                     <AddaComment />
-                 </div>
+                </div>
                 <div className="post">
                     <div className="posted_by">Dishen</div>
                     <div className="post-pic">

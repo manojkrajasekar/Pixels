@@ -7,11 +7,19 @@ import { withRouter } from 'react-router-dom';
 import './UserProfile.css';
 
 class UserProfile extends Component {
+    constructor(props){
+        super(props);
+        this.state={
+            showvalue: true
+        };
+    }
+
+    
     render() {
         return (
             <div className="UserPage">
-                <div className="UserPosts">
-                    <UserDetails />
+                <div className="UserPostsWrapper">
+                    <UserDetails showvalue={this.state.showvalue} />
                     <UserPosts />
                 </div>
             </div>

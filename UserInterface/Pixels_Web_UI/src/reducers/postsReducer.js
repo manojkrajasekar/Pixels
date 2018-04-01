@@ -7,6 +7,11 @@ const postsReducer = (state= postsReducerDefaultState, action) => {
                 ...state,
                 action.Posts
             ];
+        case 'ADD_IMAGE':
+            return [
+                ...state,
+                action.filedata
+            ];
         case 'SHOW_POST':
             return state.map((Posts) => {
             if(Posts.id === action.id){

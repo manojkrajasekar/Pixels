@@ -25,12 +25,12 @@ ReactModalPortal .ReactModal__Overlay--before-close {
     margin: 10% auto;
     background-color: whitesmoke;
     width:30%;
-    height: 70%;
+    height: 78%;
 }
 
  .modal > .PostDescription {
     margin-top: 50px;
-    height: 20%;
+    height: 7%;
     width: 20%;
 }
 
@@ -59,9 +59,8 @@ ReactModalPortal .ReactModal__Overlay--before-close {
    
 }
 
-
- .modal > .fileChoose {
-    
+.modal > .fileChoose {
+    margin-bottom: 5%;
     width: 60%;
 }
 

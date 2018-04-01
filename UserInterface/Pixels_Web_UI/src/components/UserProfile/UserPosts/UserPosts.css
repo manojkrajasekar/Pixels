@@ -3,32 +3,31 @@
     /* border-style: solid;
     border-width: 1px; */
     width:90%;
-    height:300px;
+    height:70%;
     margin:auto;
 }
 
 
 .user-posts >.post {
-    margin:30px;
+    margin:20px;
     /* border-style: solid;
-    border-width:1px; */
-    width:55%;
+    border-width:1px;  */
+    width:70%;
     height:250px;
     float: left;
 }
 
 .user-posts >.post >.post-pic {
     margin-top:25px;
-    
+    background-image: cover;
+    width:100%;
     border-style: solid;
-    border-width:1px;
-    width:80%;
-    height:70%;
+    border-width:1px; 
 }
 
 .user-posts > .post > .voteCount {
     margin-top: 8px;
-    margin-left: 2px;
+    margin-left: 10px;
     font-size: 1vw;
     font-weight: bold;
 }

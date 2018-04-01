@@ -5,11 +5,14 @@ import store from '../../../../store/configureStore'
 import { AddComment } from '../../../../actions/commentsAction';
 
 class AddaComment extends Component {
-    state = {
-        content: '',
-        commented_on: moment().format()
-    };
-
+    constructor(props){
+        super(props);
+        this.state = {
+            content: '',
+            commented_on: moment().format()
+        };
+    }
+    
     onComment = (e) => {
             const content = e.target.value;
             this.setState({
@@ -20,7 +23,7 @@ class AddaComment extends Component {
 
       Done = (e) => {
           e.preventDefault();
-          store.dispatch(AddComment({ comment:this.state.content, commented_on: this.state.commented_on})); 
+          store.dispatch(AddComment({ comment:this.state.content, commented_on: this.state.commented_on, post_id: this.props.postID})); 
         
            this.setState({
                content: ''
@@ -33,7 +36,7 @@ class AddaComment extends Component {
                 <form className="TypeComment" onSubmit={this.Done}> 
                     <input
                         type="text" 
-                        placeholder="Add a comment"
+                        placeholder="Add comment"
                         value={this.state.content}
                         onChange={this.onComment}
                     />
