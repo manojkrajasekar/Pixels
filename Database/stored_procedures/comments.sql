@@ -43,7 +43,7 @@ USE photoapp;
  BEGIN		
  
 	IF _limit IS NULL THEN
-		set _limit = 1
+		set _limit = 1;
 	END IF;
 	
  	SELECT  		

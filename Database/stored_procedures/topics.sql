@@ -46,29 +46,32 @@ CREATE PROCEDURE get_topics
 )
 BEGIN
 	DECLARE EXIT HANDLER FOR 1452
+
     SELECT 'MySQL error 1452: Cannot add or update a child row: a foreign key constraint fails' ;
 	
 	IF _limit IS NULL THEN
 		SET _limit = 1;
+	END IF;
        
     IF _is_current IS NULL THEN
 		SET _is_current = 1;
+	END IF;
     
     IF _limit = 0 THEN
     	SET _limit = 1;
-        
 	END IF;
+    
 	
-
-		SELECT
-				t.topic_id AS 'Topic ID',
-				t.topic_title AS 'Topic title',
-				t.user_id AS 'Topic posted by',
-				t.start_time 'Start Time',
-				t.end_time 'End Time'
-			FROM topics t
-			WHERE t.is_current = _is_current 
-			ORDER BY t.start_time DESC
-			LIMIT _limit;
-END ; //
+	SELECT
+			t.topic_id AS 'Topic ID',
+			t.topic_title AS 'Topic title',
+			t.user_id AS 'Topic posted by',
+			t.start_time 'Start Time',
+			t.end_time 'End Time'
+		FROM topics t
+		WHERE t.is_current = _is_current 
+		ORDER BY t.start_time DESC
+		LIMIT _limit;
+	END ;
+//
 DELIMITER ;

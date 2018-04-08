@@ -39,8 +39,8 @@ USE photoapp;
  BEGIN		
  			
  	UPDATE votes v		
- 		SET v.is_active QUESTION:= NOT v.is_active		
+ 		SET v.is_active = NOT v.is_active		
  		WHERE v.vote_id = _vote_id;		
- END;		
- //		
+ 	END;		
+ 	//		
  DELIMITER ;

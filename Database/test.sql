@@ -15,6 +15,8 @@ SELECT @USER_ID;
 CALL REGISTER_USER('Abhinav.Karthikeyan@gmail.com', 'Abhinav', 'karthieyan',@USER_ID);
 SELECT @USER_ID;
 
+CALL REGISTER_USER('venkat.vellaichamyan@gmail.com', 'VenakataSubramani', 'Vellaichamy',@USER_ID);
+SELECT @USER_ID;
 
 /* Retreives the user details, based on the given user_id */
 CALL get_user_details('1');
@@ -35,11 +37,16 @@ SELECT @TopicID;
 CALL add_topic('Beach', '2', @TopicID);
 SELECT @TopicID;
 
+CALL add_topic('Race', '3', @TopicID);
+SELECT @TopicID;
+
 CALL add_topic('Sunshine', '4', @TopicID);
 SELECT @TopicID;
 
 CALL add_topic('Dream', '5', @TopicID);
 SELECT @TopicID;
+
+
 
 
 
@@ -51,30 +58,53 @@ CALL GET_TOPICS('1');
 /* POSTS TABLE */
 
 /*Stored procedure is executed, which stores the post details in the database */
-CALL add_post('1', '2', 'manoj/wildlife/pics', 'life in danger', 'Moments', @postID);
+CALL add_post('1', '1', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522615205/Topic1_Picture1.png', 'life in danger', 'Moments', @postID);
 SELECT @postID;
 
-CALL add_post('1', '3', 'Demo/Manoj/pics', 'Demo', 'life', @postID);
+CALL add_post('1', '2', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic2_Picture1.png', 'life in danger', 'Moments', @postID);
+SELECT @postID;
+
+CALL add_post('1', '3', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic3_Picture1.png', 'Demo', 'life', @postID);
+SELECT @postID;
+
+CALL add_post('2', '1', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522615205/Topic1_Picture2.png', 'Awesome', 'Thrill', @postID);
+SELECT @postID;
+
+CALL add_post('2', '2', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic2_Picture2.png', 'Silence', 'Threat', @postID);
+SELECT @postID;
+
+CALL add_post('2', '3', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic3_Picture2.png', 'Awesome', 'Thrill', @postID);
+SELECT @postID;
+
+CALL add_post('3', '1', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522615205/Topic1_Picture3.png', 'fast', 'pay', @postID);
+SELECT @postID;
+
+CALL add_post('3', '2', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic2_Picture3.png', 'pursuit', 'cool', @postID);
+SELECT @postID;
+
+CALL add_post('3', '3', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic3_Picture3.png', 'fast', 'pay', @postID);
+SELECT @postID;
+
+CALL add_post('4', '1', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522615205/Topic1_Picture4.png', 'fast', 'pay', @postID);
+SELECT @postID;
+
+CALL add_post('4', '2', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic2_Picture4.png', 'pursuit', 'cool', @postID);
+SELECT @postID;
+
+CALL add_post('4', '3', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic3_Picture4.png', 'fast', 'pay', @postID);
+SELECT @postID;
+
+CALL add_post('5', '1', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522615205/Topic1_Picture5.png', 'pursuit', 'cool', @postID);
+SELECT @postID;
+
+CALL add_post('5', '2', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic2_Picture5.png', 'pursuit', 'cool', @postID);
+SELECT @postID;
+
+CALL add_post('5', '3', 'http://res.cloudinary.com/pixelsapp/image/upload/v1522616239/Topic3_Picture5.png', 'pursuit', 'cool', @postID);
 SELECT @postID;
 
 
-CALL add_post('2', '3', 'vicky/life/picall', 'Awesome', 'Thrill', @postID);
-SELECT @postID;
-
-
-CALL add_post('2', '2', 'Kill/life/picall', 'Silence', 'Threat', @postID);
-SELECT @postID;
-
-
-CALL add_post('4', '2', 'Dishen/baby/picall', 'fast', 'pay', @postID);
-SELECT @postID;
-
-CALL add_post('4', '3', 'Dishen/baby/all', 'pursuit', 'cool', @postID);
-SELECT @postID;
-
-
-
-/* Teis when executed, displays all the posts for a */
+/* This when executed, displays all the posts for a */
 CALL get_posts_by_topic('3');
 
 
@@ -89,23 +119,57 @@ CALL delete_post('6', '3');
 /* VOTES TABLE */
 
 /* This Stored procedure when called, registers the vote and its details for the post */
-CALL add_vote('2','1', @vote_id);
+CALL add_vote('1','2', @vote_id);
+SELECT @vote_id;
+
+CALL add_vote('1','3', @vote_id);
+SELECT @vote_id;
+
+CALL add_vote('1','4', @vote_id);
 SELECT @vote_id;
 
 CALL add_vote('2','2', @vote_id);
 SELECT @vote_id;
 
+CALL add_vote('2','3', @vote_id);
+SELECT @vote_id;
+
 CALL add_vote('2','4', @vote_id);
 SELECT @vote_id;
 
-CALL add_vote('3','1', @vote_id);
+CALL add_vote('2','5', @vote_id);
 SELECT @vote_id;
 
 CALL add_vote('3','2', @vote_id);
 SELECT @vote_id;
 
+CALL add_vote('3','3', @vote_id);
+SELECT @vote_id;
+
 CALL add_vote('3','4', @vote_id);
 SELECT @vote_id;
+
+CALL add_vote('3','5', @vote_id);
+SELECT @vote_id;
+
+CALL add_vote('4','1', @vote_id);
+SELECT @vote_id;
+
+CALL add_vote('4','3', @vote_id);
+SELECT @vote_id;
+
+CALL add_vote('4','4', @vote_id);
+SELECT @vote_id;
+
+CALL add_vote('5','1', @vote_id);
+SELECT @vote_id;
+
+CALL add_vote('5','3', @vote_id);
+SELECT @vote_id;
+
+CALL add_vote('5','4', @vote_id);
+SELECT @vote_id;
+
 
 
 CALL get_vote_info_by_post('2');
@@ -117,10 +181,25 @@ CALL update_vote('2','2','7');
 /* COMMENT TABLE */
 
 /*When a commment is added for a post, it stores the details of that comment in the table. */
-CALL add_comment('1','2','Cool pic', @comment_id);
+CALL add_comment('2','1','Cool pic', @comment_id);
 SELECT @comment_id;
 
-CALL add_comment('1','3','Cool pic', @comment_id);
+CALL add_comment('3','1','Interesting', @comment_id);
+SELECT @comment_id;
+
+CALL add_comment('4','1','Awesome', @comment_id);
+SELECT @comment_id;
+
+CALL add_comment('1','2','Dashing', @comment_id);
+SELECT @comment_id;
+
+CALL add_comment('3','2','Very good snap', @comment_id);
+SELECT @comment_id;
+
+CALL add_comment('4','2','Lovely', @comment_id);
+SELECT @comment_id;
+
+CALL add_comment('5','2','Adorable', @comment_id);
 SELECT @comment_id;
 
 
