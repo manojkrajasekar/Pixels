@@ -48,12 +48,12 @@ USE photoapp;
  )		
  BEGIN		
  	SELECT  		
- 			p.post_id AS 'POST ID',		
+ 			p.post_id AS 'post_id',		
  			p.url AS 'URL',		
- 			p.description AS 'Post Description',		
- 			u.first_name AS 'Posted by',		
- 			COUNT(DISTINCT v.vote_id) AS 'Vote count',		
- 			COUNT(DISTINCT c.comment_id) AS 'comments count'		
+ 			p.description AS 'post_description',		
+ 			u.first_name AS 'Posted_by',		
+ 			COUNT(DISTINCT v.vote_id) AS 'Vote_count',		
+ 			COUNT(DISTINCT c.comment_id) AS 'comments_count'		
  		FROM posts p 		
  		JOIN users u		
  			ON p.user_id = u.user_id		
@@ -83,12 +83,12 @@ USE photoapp;
  )		
  BEGIN		
  	SELECT 		
- 			p.post_id AS 'POST ID',		
+ 			p.post_id AS 'post_id',		
  			p.url AS 'URL',		
- 			p.description AS 'Post Description',		
- 			u.first_name AS 'Posted by',		
- 			COUNT(DISTINCT v.vote_id) AS 'Vote count',		
- 			COUNT(DISTINCT c.comment_id) AS 'comments count'		
+ 			p.description AS 'post_description',		
+ 			u.first_name AS 'posted_by',		
+ 			COUNT(DISTINCT v.vote_id) AS 'vote_count',		
+ 			COUNT(DISTINCT c.comment_id) AS 'comments_count'		
  		FROM posts p 		
  		JOIN users u		
  			ON p.user_id = u.user_id		

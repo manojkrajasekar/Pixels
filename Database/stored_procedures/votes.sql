@@ -44,3 +44,38 @@ USE photoapp;
  	END;		
  	//		
  DELIMITER ;
+
+
+/* Checks whether the vote is valid, if valid it makes it invalid. */
+ DROP PROCEDURE IF EXISTS add_vote;		
+ 		
+ DELIMITER //		
+ BEGIN 
+	DECLARE vote_id INT DEFAULT NULL;
+    
+    SET vote_id:= (	SELECT v.vote_id from votes v
+						WHERE v.post_id = _post_id 
+					 	AND v.user_id = _user_id
+				  );
+    
+		IF (vote_id IS NULL) THEN
+			INSERT INTO votes		
+				(		
+					post_id,		
+					user_id		
+				) 		
+				VALUES		
+				(		
+					_post_id,		
+					_user_id		
+				);
+		END IF;
+		
+		IF(vote_id IS NOT NULL) THEN
+				UPDATE votes v		
+					SET v.is_active = NOT v.is_active		
+					WHERE v.vote_id = vote_id;	
+		END IF;
+	END;
+	//
+DELIMITER;
