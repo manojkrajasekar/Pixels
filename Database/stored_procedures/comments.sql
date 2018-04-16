@@ -1,4 +1,4 @@
-USE photoapp;		
+USE pixels;		
  		
  /* stores the details of an added comment(user id, post id, comment) for a post in the comments table */		
  /*  QUESTION: What to do if any one (or) all of the input parameters are null  */		
@@ -47,9 +47,9 @@ USE photoapp;
 	END IF;
 	
  	SELECT  		
- 			u.first_name AS 'Commented by',		
- 			c.comment_content AS 'Comment',		
- 			c.upload_time AS 'Time'		
+ 			u.first_name AS 'commented_by',		
+ 			c.comment_content AS 'comment',		
+ 			c.upload_time AS 'time'		
  		FROM comments c 		
  		JOIN users u 		
  			ON u.user_id = c.user_id 		

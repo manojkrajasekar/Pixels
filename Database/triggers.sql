@@ -1,4 +1,4 @@
-use photoapp;
+use pixels;
 
 /* When a user posts a pic, this updates the number of posts for that user */
 DROP TRIGGER IF EXISTS update_post_count;

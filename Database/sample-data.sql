@@ -1,31 +1,41 @@
-use photoapp;
+USE pixels;
 
 /*USER TABLE*/
 
 /*This stored procedure is executed, when a new user is added.*/
-CALL REGISTER_USER('manoj.k.rajasekar@gmail.com','Manoj','Rajasekar', @USER_ID);
+CALL register_user('manoj.k.rajasekar@gmail.com','Manoj','Rajasekar', @USER_ID);
 SELECT @USER_ID;
 
-CALL REGISTER_USER('vignesh.rajasekar@gmail.com', 'Vignesh', 'Rajasekar',@USER_ID);
+CALL register_user('vignesh.rajasekar@gmail.com', 'Vignesh', 'Rajasekar', @USER_ID);
 SELECT @USER_ID;
 
-CALL REGISTER_USER('Dishen.Raana@gmail.com', 'Dishen', 'Raana',@USER_ID);
+CALL register_user('Dishen.Raana@gmail.com', 'Dishen', 'Raana', @USER_ID);
 SELECT @USER_ID;
 
-CALL REGISTER_USER('Abhinav.Karthikeyan@gmail.com', 'Abhinav', 'karthieyan',@USER_ID);
+CALL register_user('Abhinav.Karthikeyan@gmail.com', 'Abhinav', 'karthieyan', @USER_ID);
 SELECT @USER_ID;
 
-CALL REGISTER_USER('venkat.vellaichamyan@gmail.com', 'VenakataSubramani', 'Vellaichamy',@USER_ID);
+CALL register_user('venkat.vellaichamyan@gmail.com', 'VenakataSubramani', 'Vellaichamy', @USER_ID);
 SELECT @USER_ID;
 
-/* Retreives the user details, based on the given user_id */
-CALL get_user_details('1');
+CALL register_user('John.r@gmail.com', 'John', 'Riley', @USER_ID);
+SELECT @USER_ID;
 
-/* This updates the user details */
-CALL update_user_details('1','Mano','Rajasekar');
+CALL register_user('Finch.M@gmail.com', 'Finch', 'Mark', @USER_ID);
+SELECT @USER_ID;
 
-/* This stored procedure when executed, sets the IS_ACTIVE column to 0, thus deactivating the user */
-CALL toggle_user('1');
+CALL register_user('Russell.M@gmail.com', 'Russell', 'Meck', @USER_ID);
+SELECT @USER_ID;
+
+CALL register_user('Steve.R@gmail.com', 'Steve', 'Rec', @USER_ID);
+SELECT @USER_ID;
+
+CALL register_user('Jody.D@gmail.com', 'Jody', 'Dellie', @USER_ID);
+SELECT @USER_ID;
+
+CALL register_user('Ian.G@gmail.com', 'Ian', 'Gallegher' ,@USER_ID);
+SELECT @USER_ID;
+
 
 
 /* TOPIC TABLE */
@@ -51,7 +61,7 @@ SELECT @TopicID;
 
 
 /*This stored procedure when executed retreives all the topics, which are active*/
-CALL GET_TOPICS('1');
+CALL get_topics('1');
 
 
 
@@ -172,7 +182,7 @@ SELECT @vote_id;
 
 
 
-CALL get_vote_info_by_post('2');
+CALL get_voter_info_by_post('2');
 
 /* This stored procedure when called, updates the vote i.e changes the is_active value of vote */
 CALL update_vote('2','2','7');

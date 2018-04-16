@@ -1,2 +1,2 @@
 /* This creates the database */
-CREATE DATABASE photoapp;
+CREATE DATABASE pixels;

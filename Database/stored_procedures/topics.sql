@@ -1,4 +1,4 @@
-USE photoapp;
+USE pixels;
 
 /* When a user wins, his/her submitted topic's details are stored in the topics table */
 /* QUESTION: What if any one (or) all the input parameters are null ? */
@@ -63,11 +63,11 @@ BEGIN
     
 	
 	SELECT
-			t.topic_id AS 'Topic ID',
-			t.topic_title AS 'Topic title',
-			t.user_id AS 'Topic posted by',
-			t.start_time 'Start Time',
-			t.end_time 'End Time'
+			t.topic_id AS 'topic_id',
+			t.topic_title AS 'topic_title',
+			t.user_id AS 'topic_by',
+			t.start_time 'start_time',
+			t.end_time 'end_time'
 		FROM topics t
 		WHERE t.is_current = _is_current 
 		ORDER BY t.start_time DESC

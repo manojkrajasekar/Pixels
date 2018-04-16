@@ -1,4 +1,4 @@
-USE photoapp;		
+USE pixels;		
  		
  /* This stored procedure is executed, when a picture is posted and the details of that pic are stored in the database */		
  /* TODO: Have to check whether the user is active ? */		
@@ -44,14 +44,16 @@ USE photoapp;
  DELIMITER //		
  CREATE PROCEDURE get_posts_by_topic		
  (		
- 	IN _topic_id INTEGER 		
+ 	IN _topic_id INTEGER,
+	IN _logged_in_user_id INTEGER	
  )		
  BEGIN		
  	SELECT  		
  			p.post_id AS 'post_id',		
  			p.url AS 'URL',		
  			p.description AS 'post_description',		
- 			u.first_name AS 'Posted_by',		
+ 			u.first_name AS 'Posted_by',	
+			uv.vote_id AS 'vote_id',	
  			COUNT(DISTINCT v.vote_id) AS 'Vote_count',		
  			COUNT(DISTINCT c.comment_id) AS 'comments_count'		
  		FROM posts p 		
@@ -59,7 +61,10 @@ USE photoapp;
  			ON p.user_id = u.user_id		
  				AND p.topic_id = _topic_id 		
  				AND u.is_active = 1		
- 				AND p.is_active = 1		
+ 				AND p.is_active = 1
+		LEFT JOIN votes uv
+        	ON p.post_id = uv.post_id
+            	AND uv.user_id = _logged_in_user_id	
  		LEFT JOIN votes v 		
  			ON p.post_id = v.post_id 		
  				AND v.is_active = 1		
@@ -88,7 +93,7 @@ USE photoapp;
  			p.description AS 'post_description',		
  			u.first_name AS 'posted_by',		
  			COUNT(DISTINCT v.vote_id) AS 'vote_count',		
- 			COUNT(DISTINCT c.comment_id) AS 'comments_count'		
+ 			COUNT(DISTINCT c.comment_id) AS 'comment_count'		
  		FROM posts p 		
  		JOIN users u		
  			ON p.user_id = u.user_id		
@@ -118,8 +123,8 @@ USE photoapp;
  )		
  BEGIN		
  	SELECT  		
- 			u.first_name AS 'Voted by',		
- 			u.user_id AS 'User ID'		
+ 			u.first_name AS 'voted_by',		
+ 			u.user_id AS 'user_id'		
          FROM votes v 		
          JOIN users u		
  			ON v.user_id = u.user_id		

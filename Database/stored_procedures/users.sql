@@ -1,4 +1,4 @@
-USE photoapp;		
+USE pixels;		
 		
  /* This is executed, when a new user is added. User details are stored in the USER table */		
  /* QUESTION: What if any one (or) all the input parameters are null ? */		
@@ -43,10 +43,10 @@ USE photoapp;
  )		
  BEGIN		
  	SELECT		
- 			u.mail_id AS 'Mail ID',		
- 			u.first_name AS 'First Name', 		
- 			u.last_name AS 'Last Name',		
- 			u.no_of_posts AS 'Total Number of posts'		
+ 			u.mail_id AS 'mail_id',		
+ 			u.first_name AS 'first_name', 		
+ 			u.last_name AS 'last_name',		
+ 			u.no_of_posts AS 'total_no_of_posts'		
  		FROM users u		
  		WHERE u.user_id = _user_id 		
  			AND u.is_active = 1;		
@@ -64,15 +64,17 @@ USE photoapp;
  	//		
  CREATE PROCEDURE update_user_details		
  (		
-     IN _user_id VARCHAR(254),		
+     IN _user_id INT,		
      IN _first_name VARCHAR(50),		
-     IN _last_name VARCHAR(50)		
+     IN _last_name VARCHAR(50),
+     IN _mail_id VARCHAR(320)	
  )		
  BEGIN		
      UPDATE users u		
  		SET		
  			u.first_name = _first_name,		
- 			u.last_name = _last_name		
+ 			u.last_name = _last_name,
+            u.mail_id = _mail_id		
  		WHERE u.user_id = _user_id 		
  			AND u.is_active = 1;		
  END ; //		
@@ -99,19 +101,4 @@ USE photoapp;
  DELIMITER ;		
  		
  		
- /* Gets the initial information of the logged in user and the current topic */		
- /* QUESTION: What if the logged_in_user_id is null ? */		
- DROP PROCEDURE IF EXISTS get_initial_info;		
- DELIMITER //		
- CREATE PROCEDURE get_initial_info		
- (		
- 	IN logged_in_user_id INTEGER 		
- )		
- BEGIN		
- 	SELECT  first_name AS 'user', last_name AS 'Last Name', mail_id AS 'email', no_of_posts AS 'no_of_posts' from users WHERE user_id = logged_in_user_id AND users.is_active = 1		
- 	UNION		
- 	SELECT  topic_title AS 'current topic', null, null, null from topics WHERE topics.is_current = 1;		
- END;		
- //		
- DELIMITER ;		
  

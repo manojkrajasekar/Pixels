@@ -1,6 +1,6 @@
 
 /*This is to use the photoapp database*/
-USE photoapp;
+USE pixels;
 
 DROP TABLE IF EXISTS comments;
 DROP TABLE IF EXISTS votes;
