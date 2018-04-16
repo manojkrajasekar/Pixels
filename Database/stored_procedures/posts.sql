@@ -50,11 +50,12 @@ USE pixels;
  BEGIN		
  	SELECT  		
  			p.post_id AS 'post_id',		
- 			p.url AS 'URL',		
+ 			p.url AS 'url',		
  			p.description AS 'post_description',		
  			u.first_name AS 'Posted_by',	
-			uv.vote_id AS 'vote_id',	
- 			COUNT(DISTINCT v.vote_id) AS 'Vote_count',		
+			uv.vote_id AS 'vote_id',
+			uv.is_active AS 'is_voted',	
+ 			COUNT(DISTINCT v.vote_id) AS 'vote_count',		
  			COUNT(DISTINCT c.comment_id) AS 'comments_count'		
  		FROM posts p 		
  		JOIN users u		
@@ -84,14 +85,17 @@ USE pixels;
  DELIMITER //		
  CREATE PROCEDURE get_posts_by_user		
  (		
- 	IN _user_id INTEGER		
+ 	IN _user_id INTEGER
+	IN _logged_in_user_id INTEGER
  )		
  BEGIN		
  	SELECT 		
  			p.post_id AS 'post_id',		
- 			p.url AS 'URL',		
+ 			p.url AS 'url',		
  			p.description AS 'post_description',		
- 			u.first_name AS 'posted_by',		
+ 			u.first_name AS 'posted_by',	
+			uv.vote_id AS 'vote_id',
+			uv.is_active AS 'is_voted',		
  			COUNT(DISTINCT v.vote_id) AS 'vote_count',		
  			COUNT(DISTINCT c.comment_id) AS 'comment_count'		
  		FROM posts p 		
@@ -99,7 +103,10 @@ USE pixels;
  			ON p.user_id = u.user_id		
  				AND p.user_id = _user_id		
  				AND u.is_active = 1		
- 				AND p.is_active = 1		
+ 				AND p.is_active = 1	
+		LEFT JOIN votes uv
+        	ON p.post_id = uv.post_id
+            	AND uv.user_id = _logged_in_user_id		
  		LEFT JOIN votes v 		
  			ON p.post_id = v.post_id 		
  				AND v.is_active = 1		
