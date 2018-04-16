@@ -85,7 +85,7 @@ USE pixels;
  DELIMITER //		
  CREATE PROCEDURE get_posts_by_user		
  (		
- 	IN _user_id INTEGER
+ 	IN _user_id INTEGER,
 	IN _logged_in_user_id INTEGER
  )		
  BEGIN		

@@ -10,7 +10,8 @@ USE pixels;
  (	
 	IN _post_id INTEGER,
 	IN _user_id INTEGER,	
- 	INOUT _vote_id INTEGER		
+ 	INOUT _vote_id INTEGER,
+	OUT _is_active BOOLEAN	
  )			
  
  BEGIN 
@@ -25,14 +26,17 @@ USE pixels;
 					_post_id,		
 					_user_id		
 				);
-			SELECT LAST_INSERT_ID() INTO _vote_id;
 		END IF;
+        
+        SELECT LAST_INSERT_ID() INTO _vote_id;
 		
-		IF(vote_id IS NOT NULL) THEN
-				UPDATE votes v		
-					SET v.is_active = NOT v.is_active		
+		IF(_vote_id IS NOT NULL) THEN
+				UPDATE votes v	
+					SET v.is_active = NOT v.is_active	
+					AND _is_active = is_active
 					WHERE v.vote_id = vote_id;	
+                SET _is_active = is_active;
 		END IF;
-	END;
+    END;
 	//
 DELIMITER;
