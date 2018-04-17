@@ -45,14 +45,15 @@ USE pixels;
  	SELECT		
  			u.mail_id AS 'mail_id',		
  			u.first_name AS 'first_name', 		
- 			u.last_name AS 'last_name',		
- 			u.no_of_posts AS 'total_no_of_posts'		
- 		FROM users u		
- 		WHERE u.user_id = _user_id 		
- 			AND u.is_active = 1;		
- END;		
- //		
- DELIMITER ;		
+ 			u.last_name AS 'last_name',
+            COUNT(DISTINCT p.post_id) AS 'no_of_posts'
+ 		FROM users u
+        INNER JOIN posts p
+        	ON u.user_id = p.user_id
+                AND p.user_id = _user_id 		
+                AND u.is_active = 1;
+END ; //		
+DELIMITER ;		
  		
  		
  /* ------------------------------------------------------------------------ */		

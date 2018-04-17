@@ -1,6 +1,6 @@
 USE pixels;
 
-/*USER TABLE*/
+/*USERS TABLE*/
 
 /*This stored procedure is executed, when a new user is added.*/
 CALL register_user('manoj.k.rajasekar@gmail.com','Manoj','Rajasekar', @USER_ID);
@@ -55,13 +55,6 @@ SELECT @TopicID;
 
 CALL add_topic('Dream', '5', @TopicID);
 SELECT @TopicID;
-
-
-
-
-
-/*This stored procedure when executed retreives all the topics, which are active*/
-CALL get_topics('1');
 
 
 
@@ -183,9 +176,6 @@ SELECT @vote_id;
 
 
 CALL get_voter_info_by_post('2');
-
-/* This stored procedure when called, updates the vote i.e changes the is_active value of vote */
-CALL update_vote('2','2','7');
 
 
 /* COMMENT TABLE */
