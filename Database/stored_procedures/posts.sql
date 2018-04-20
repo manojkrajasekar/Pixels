@@ -35,6 +35,43 @@ USE pixels;
  	SELECT LAST_INSERT_ID() INTO _post_id;		
  END;		
  //		
+ DELIMITER ;
+
+DROP PROCEDURE IF EXISTS get_post;		
+DELIMITER //
+CREATE PROCEDURE get_post		
+(		
+	IN _post_id INTEGER,		
+	IN _logged_in_user_id INTEGER	
+)	
+ BEGIN		
+ 	SELECT  		
+ 			p.post_id AS 'post_id',		
+ 			p.url AS 'url',		
+ 			p.description AS 'post_description',		
+ 			u.user_id AS 'posted_by_user_id',
+			u.first_name AS 'Posted_by',	
+			uv.vote_id AS 'vote_id',
+			uv.is_active AS 'is_voted',	
+ 			COUNT(DISTINCT v.vote_id) AS 'vote_count',		
+ 			COUNT(DISTINCT c.comment_id) AS 'comments_count'		
+ 		FROM posts p
+		JOIN users u		
+ 			ON p.user_id = u.user_id		
+ 				AND u.is_active = 1		
+ 				AND p.is_active = 1
+		LEFT JOIN votes uv
+        	ON p.post_id = uv.post_id
+            	AND uv.user_id = _logged_in_user_id	
+ 		LEFT JOIN votes v 		
+ 			ON p.post_id = v.post_id 		
+ 				AND v.is_active = 1		
+ 		LEFT JOIN comments c 		
+ 			ON p.post_id = c.post_id		
+ 				AND c.is_active = 1		
+ 		WHERE p.post_id = _post_id;		
+ END;		
+ //		
  DELIMITER ;		
  		
  		
@@ -195,40 +232,34 @@ USE pixels;
 
 
  /* Gets the details of the Best post for the previous week */
-DROP PROCEDURE IF EXISTS get_best_post_details;		
+DROP PROCEDURE IF EXISTS get_best_post;		
 DELIMITER //
-CREATE PROCEDURE get_best_post_details()	
+CREATE PROCEDURE get_best_post(
+	IN topic_id INTEGER
+)	
 BEGIN
-SELECT 
-		COUNT(DISTINCT v.vote_id) AS vote_count, 
-		v.post_id,
-		p.url, 
-		p.topic_id,
-		u.first_name,
-		t.topic_title 
-	FROM `votes` v 
-		LEFT JOIN `posts` p 
-			ON p.post_id = v.post_id 
-		LEFT JOIN `users` u 
-			ON u.user_id = p.user_id 
-		LEFT JOIN `topics` t 
-			ON t.topic_id = p.topic_id
-		GROUP BY v.post_id 
-		HAVING  
-		COUNT(DISTINCT 	v.vote_id) 
-			= (
-				SELECT 
-				MAX(vote_count)
-				FROM
-				(
-					SELECT 
-					COUNT(DISTINCT v.vote_id) AS'vote_count' 
-					FROM `votes` v 
-					LEFT JOIN `posts` p 
-					ON p.post_id = v.post_id 
-					GROUP BY v.post_id) 
-				AS max_vote_details 
-			);
+	DECLARE top_post INT;
+	
+	CREATE TABLE _in_mem_vote_count (post_id int, vote_count int) ENGINE=MEMORY;
+
+	INSERT INTO _in_mem_vote_count (post_id, vote_count)
+	SELECT
+		post_id,
+		COUNT(1)
+	FROM votes
+	GROUP BY post_id;
+
+	SET @top_post = (
+		SELECT
+			post_id
+		FROM _in_mem_vote_count
+		ORDER BY vote_count DESC
+		LIMIT 1
+	);
+
+	DROP TABLE _in_mem_vote_count;
+
+	CALL get_post(@top_post, NULL);
 END;
 //		
 DELIMITER ;
