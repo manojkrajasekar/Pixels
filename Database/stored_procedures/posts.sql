@@ -191,3 +191,44 @@ USE pixels;
  END;		
  //		
  DELIMITER ;
+
+
+
+ /* Gets the details of the Best post for the previous week */
+DROP PROCEDURE IF EXISTS get_best_post_details;		
+DELIMITER //
+CREATE PROCEDURE get_best_post_details()	
+BEGIN
+SELECT 
+		COUNT(DISTINCT v.vote_id) AS vote_count, 
+		v.post_id,
+		p.url, 
+		p.topic_id,
+		u.first_name,
+		t.topic_title 
+	FROM `votes` v 
+		LEFT JOIN `posts` p 
+			ON p.post_id = v.post_id 
+		LEFT JOIN `users` u 
+			ON u.user_id = p.user_id 
+		LEFT JOIN `topics` t 
+			ON t.topic_id = p.topic_id
+		GROUP BY v.post_id 
+		HAVING  
+		COUNT(DISTINCT 	v.vote_id) 
+			= (
+				SELECT 
+				MAX(vote_count)
+				FROM
+				(
+					SELECT 
+					COUNT(DISTINCT v.vote_id) AS'vote_count' 
+					FROM `votes` v 
+					LEFT JOIN `posts` p 
+					ON p.post_id = v.post_id 
+					GROUP BY v.post_id) 
+				AS max_vote_details 
+			);
+END;
+//		
+DELIMITER ;

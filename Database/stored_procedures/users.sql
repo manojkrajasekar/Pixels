@@ -9,7 +9,8 @@ USE pixels;
  (		
      IN _mail_id VARCHAR(254),		
      IN _first_name VARCHAR(50),		
-     IN _last_name VARCHAR(50),		
+     IN _last_name VARCHAR(50),	
+     IN _profile_pic TEXT,	
      OUT _user_id INTEGER		
  )		
  BEGIN		
